@@ -376,7 +376,7 @@
 			if ( ! track || n < 2 ) { return; }
 
 			root.classList.add( 'is-enhanced' );
-			var AUTOPLAY = 5500;
+			var AUTOPLAY = 2000;   // ms each photo stays before moving on
 			root.style.setProperty( '--lyfd-slide-ms', AUTOPLAY + 'ms' );
 
 			slides.forEach( function ( s ) {      // wrap content so only the inner box is transformed

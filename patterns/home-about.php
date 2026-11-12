@@ -17,8 +17,8 @@ $slides = array(
 <!-- wp:group {"tagName":"section","anchor":"about","align":"full","className":"lyfd-section lyfd-about","layout":{"type":"default"}} -->
 <section id="about" class="wp-block-group alignfull lyfd-section lyfd-about"><!-- wp:group {"className":"lyfd-wrap","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-wrap"><!-- wp:columns {"verticalAlignment":"center","className":"lyfd-about__cols"} -->
-<div class="wp-block-columns are-vertically-aligned-center lyfd-about__cols"><!-- wp:column {"verticalAlignment":"center","width":"48%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:48%"><!-- wp:group {"className":"lyfd-slider lyfd-scroll3d","layout":{"type":"default"}} -->
+<div class="wp-block-columns are-vertically-aligned-center lyfd-about__cols"><!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%"><!-- wp:group {"className":"lyfd-slider lyfd-scroll3d","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-slider lyfd-scroll3d"><!-- wp:group {"className":"lyfd-slider__track","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-slider__track">
 <?php foreach ( $slides as $sl ) : ?>
@@ -44,8 +44,8 @@ $slides = array(
 <!-- /wp:group --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"52%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:52%"><!-- wp:paragraph {"className":"lyfd-eyebrow lyfd-reveal"} -->
+<!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%"><!-- wp:paragraph {"className":"lyfd-eyebrow lyfd-reveal"} -->
 <p class="lyfd-eyebrow lyfd-reveal">Company Profile</p>
 <!-- /wp:paragraph -->
 

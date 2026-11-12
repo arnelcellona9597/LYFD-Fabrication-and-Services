@@ -574,7 +574,7 @@ body.admin-bar:not(.editor-styles-wrapper) .lyfd-header { top: 32px; }
 }
 
 /* 8. About / cards --------------------------------------------------------- */
-.lyfd-about__cols { gap: clamp(36px, 7vw, 100px); margin-bottom: clamp(60px, 8vw, 110px); align-items: center; }
+.lyfd-about__cols { gap: clamp(36px, 5vw, 72px); margin-bottom: clamp(60px, 8vw, 110px); align-items: center; }
 .lyfd-about__cols .wp-block-column > * { margin-block: 0 1.4rem; }
 .lyfd-about__cols .wp-block-column > :last-child { margin-bottom: 0; }
 
@@ -1540,3 +1540,9 @@ html.has-modal-open .lyfd-fab { opacity: 0 !important; pointer-events: none; tra
 	.lyfd-slider.is-enhanced .lyfd-slide__inner { transform: none; opacity: 1; }
 	.lyfd-slider__progress { display: none; }
 }
+
+/* About: larger slider column, headline sized to the narrower text column */
+.lyfd-about__cols .lyfd-title { font-size: clamp(1.8rem, 3.2vw, 3rem); }
+.lyfd-slide__meta { padding: 90px 28px 26px; }
+.lyfd-slide__meta .lyfd-product__title { font-size: clamp(1.15rem, 1.9vw, 1.6rem) !important; }
+@media (min-width: 783px) { .lyfd-slide > .wp-block-image { padding: 12px; } .lyfd-slide__meta { left: 12px; right: 12px; bottom: 12px; } .lyfd-slider__progress { left: 12px; right: 12px; top: 12px; } }
