@@ -1,0 +1,20 @@
+/*
+Theme Name:   LYFD Luxe
+Theme URI:    https://www.facebook.com/profile.php?id=61595745041102
+Description:  Premium block-theme child of Twenty Twenty-Five for LYFD Stainless Fabrication and Services (Davao City). Dark brushed-steel look with teal accents taken from the LYFD logo, 3D scroll reveals, tilt-on-hover cards and a filterable product gallery. Fully editable in the Gutenberg Site Editor.
+Author:       Webee Labs
+Template:     twentytwentyfive
+Version:      1.0.0
+Requires at least: 6.7
+Requires PHP: 7.4
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  lyfd-luxe
+Tags:         block-theme, full-site-editing, dark, custom-colors, wide-blocks, translation-ready
+*/
+
+/*
+ * Intentionally empty.
+ * All front-end and editor styles live in assets/css/lyfd.css and are
+ * enqueued from functions.php so the version string busts caches on change.
+ */
