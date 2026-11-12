@@ -31,13 +31,7 @@ $products = esc_url( home_url( '/products/' ) );
 
 <!-- wp:paragraph {"className":"lyfd-reveal"} -->
 <p class="lyfd-reveal">We work with restaurants, hotels, commissaries and homeowners to turn a floor plan into a working, easy-to-clean, built-to-last space. Every piece is measured to your layout, welded and finished by skilled fabricators, then delivered and installed on site.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:buttons {"className":"lyfd-reveal"} -->
-<div class="wp-block-buttons lyfd-reveal"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo $products; ?>">Explore Products</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 

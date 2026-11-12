@@ -29,7 +29,6 @@ $contact  = esc_url( home_url( '/#contact' ) );
 <!-- wp:navigation-link {"label":"Home","type":"custom","url":"<?php echo $home; ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"About","type":"custom","url":"<?php echo $about; ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Products","type":"custom","url":"<?php echo $products; ?>","kind":"custom","isTopLevelLink":true} /-->
-<!-- wp:navigation-link {"label":"Book a Visit","type":"custom","url":"<?php echo $book; ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Contact","type":"custom","url":"<?php echo $contact; ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- /wp:navigation -->
 

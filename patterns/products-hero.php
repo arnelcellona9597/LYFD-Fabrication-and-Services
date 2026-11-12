@@ -5,7 +5,7 @@
  * Categories: lyfd-luxe
  * Description: Page header for the Products page.
  */
-$contact = esc_url( home_url( '/#contact' ) );
+$gallery = esc_url( '#gallery' );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lyfd-page-hero","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull lyfd-page-hero"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"lyfd-page-hero__bg"} -->
@@ -27,7 +27,7 @@ $contact = esc_url( home_url( '/#contact' ) );
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo $contact; ?>">Request a Quote</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo $gallery; ?>">Browse the Gallery</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></section>

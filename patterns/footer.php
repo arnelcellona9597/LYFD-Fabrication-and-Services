@@ -41,7 +41,7 @@ $fb       = 'https://www.facebook.com/profile.php?id=61595745041102';
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lyfd-footer__links"} -->
-<p class="lyfd-footer__links">Davao City, Philippines<br><a href="tel:+639330648606">0933 064 8606</a><br><a href="mailto:info@lyfdfab.com">info@lyfdfab.com</a><br><a href="<?php echo esc_url( $fb ); ?>" target="_blank" rel="noreferrer noopener">Facebook &mdash; LYFD</a><br><a href="https://m.me/61595745041102" target="_blank" rel="noreferrer noopener">Message us on Messenger</a></p>
+<p class="lyfd-footer__links">Davao City, Philippines<br><a href="tel:+639330648606">0933 064 8606</a><br><a href="mailto:info@lyfdfab.com">info@lyfdfab.com</a><br><a href="<?php echo esc_url( $fb ); ?>" target="_blank" rel="noreferrer noopener">Facebook &mdash; LYFD</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->

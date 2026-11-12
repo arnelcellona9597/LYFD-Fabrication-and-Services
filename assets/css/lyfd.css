@@ -1278,7 +1278,6 @@ body.admin-bar:not(.editor-styles-wrapper) .lyfd-header { top: 32px; }
 }
 /* tablets in portrait/landscape */
 @media (min-width: 783px) and (max-width: 1024px) {
-	.lyfd-header__cta { display: none; }
 	.lyfd-nav a { letter-spacing: 0.12em; }
 }
 /* large desktop monitors */
@@ -1449,3 +1448,6 @@ html.has-modal-open .lyfd-fab { opacity: 0 !important; pointer-events: none; tra
 /* menu: no boxed focus ring on the auto-focused first link (colour + shift show focus instead) */
 .lyfd-nav .is-menu-open .wp-block-navigation-item__content:focus,
 .lyfd-nav .is-menu-open .wp-block-navigation-item__content:focus-visible { outline: none !important; box-shadow: none; color: var(--lyfd-teal) !important; }
+
+/* header nav: no browser/core underline (the teal sweep is the hover cue) */
+.lyfd-nav .wp-block-navigation-item__content, .lyfd-nav .wp-block-navigation-item__content:hover { text-decoration: none !important; }

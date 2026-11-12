@@ -6,7 +6,6 @@
  * Description: Contact details plus the contact form (shortcode [lyfd_contact_form]).
  */
 $fb = esc_url( 'https://www.facebook.com/profile.php?id=61595745041102' );
-$m  = esc_url( 'https://m.me/61595745041102' );
 ?>
 <!-- wp:group {"tagName":"section","anchor":"contact","align":"full","className":"lyfd-section lyfd-contact","layout":{"type":"default"}} -->
 <section id="contact" class="wp-block-group alignfull lyfd-section lyfd-contact"><!-- wp:group {"className":"lyfd-wrap","layout":{"type":"default"}} -->
@@ -66,11 +65,7 @@ $m  = esc_url( 'https://m.me/61595745041102' );
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:buttons {"className":"lyfd-reveal"} -->
-<div class="wp-block-buttons lyfd-reveal"><!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo $m; ?>" target="_blank" rel="noreferrer noopener">Message on Facebook</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+</div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"58%"} -->

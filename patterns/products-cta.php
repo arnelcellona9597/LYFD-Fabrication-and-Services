@@ -6,7 +6,7 @@
  * Description: Closing call-to-action band.
  */
 $contact = esc_url( home_url( '/#contact' ) );
-$m       = esc_url( 'https://m.me/61595745041102' );
+$book    = esc_url( home_url( '/#book' ) );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lyfd-section lyfd-cta-band","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull lyfd-section lyfd-cta-band"><!-- wp:group {"className":"lyfd-wrap lyfd-cta-band__inner lyfd-reveal","layout":{"type":"default"}} -->
@@ -20,11 +20,11 @@ $m       = esc_url( 'https://m.me/61595745041102' );
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo $m; ?>" target="_blank" rel="noreferrer noopener">Message on Facebook</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo $book; ?>">Book a Visit</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo $contact; ?>">Contact Details</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo $contact; ?>">Send a Message</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></section>

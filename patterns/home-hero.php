@@ -6,7 +6,7 @@
  * Description: Full-screen hero with parallax kitchen photo, split-word headline and a floating 3D logo emblem.
  */
 $products = esc_url( home_url( '/products/' ) );
-$book     = esc_url( home_url( '/#book' ) );
+$contact  = esc_url( home_url( '/#contact' ) );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lyfd-hero","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull lyfd-hero"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"lyfd-hero__bg"} -->
@@ -33,7 +33,7 @@ $book     = esc_url( home_url( '/#book' ) );
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo $book; ?>">Book a Visit</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo $contact; ?>">Request a Quote</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
