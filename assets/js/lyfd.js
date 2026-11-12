@@ -338,6 +338,34 @@
 		window.addEventListener( 'scroll', onScroll, { passive: true } );
 	}
 
+
+	/* ---------- mobile menu: inject brand + quick-contact block when it opens ---------- */
+	function initMenu() {
+		var tpl = doc.getElementById( 'lyfd-menu-extra' );
+		var overlay = doc.querySelector( '.lyfd-nav .wp-block-navigation__responsive-container' );
+		if ( ! tpl || ! overlay || ! ( 'MutationObserver' in window ) ) { return; }
+
+		function fill() {
+			if ( ! overlay.classList.contains( 'is-menu-open' ) || overlay.querySelector( '.lyfd-menu-extra' ) ) { return; }
+			var frag = tpl.content.cloneNode( true );
+			var brand = frag.querySelector( '.lyfd-menu-brand' );
+			var extra = frag.querySelector( '.lyfd-menu-extra' );
+			var dialog = overlay.querySelector( '.wp-block-navigation__responsive-dialog' );
+			var content = overlay.querySelector( '.wp-block-navigation__responsive-container-content' );
+			if ( dialog && brand ) { dialog.insertBefore( brand, dialog.firstChild ); }
+			if ( content && extra ) { content.appendChild( extra ); }
+		}
+		new MutationObserver( fill ).observe( overlay, { attributes: true, attributeFilter: [ 'class' ] } );
+
+		overlay.addEventListener( 'click', function ( e ) {
+			var a = e.target.closest( '.lyfd-menu-extra a[href*="#"]' );
+			if ( a ) {   // same-page anchor: close the menu so the section is visible
+				var close = overlay.querySelector( '.wp-block-navigation__responsive-container-close' );
+				if ( close ) { close.click(); }
+			}
+		} );
+	}
+
 	/* ---------- boot ---------- */
 	function boot() {
 		initSplit();
@@ -349,6 +377,7 @@
 		initFilter();
 		initReels();
 		initPromo();
+		initMenu();
 		root.classList.add( 'lyfd-ready' );
 	}
 

@@ -1306,3 +1306,146 @@ body.admin-bar:not(.editor-styles-wrapper) .lyfd-header { top: 32px; }
 	.lyfd-fab, .lyfd-fab::before { animation: none; }
 	.lyfd-promo__card { transition: none; }
 }
+
+/* 22. Mobile menu overlay -------------------------------------------------- */
+html.has-modal-open .lyfd-fab { opacity: 0 !important; pointer-events: none; transform: translateY(20px) !important; animation: none; }
+
+.lyfd-nav .wp-block-navigation__responsive-container.is-menu-open {
+	overflow: hidden;
+	background:
+		radial-gradient(110% 70% at 100% 0%, rgba(30, 214, 210, 0.22), transparent 62%),
+		radial-gradient(90% 60% at 0% 100%, rgba(15, 143, 141, 0.3), transparent 62%),
+		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 4px),
+		#05090a !important;
+	animation: lyfd-menu-open 0.85s var(--lyfd-ease) both;
+}
+/* big logo watermark + slowly turning ring */
+.lyfd-nav .is-menu-open::before {
+	content: "";
+	position: absolute;
+	right: -22%;
+	bottom: 4%;
+	width: min(120vw, 520px);
+	aspect-ratio: 1;
+	background: url("../images/lyfd-logo.webp") center / contain no-repeat;
+	--o: 0.085;
+	opacity: 0.085;
+	pointer-events: none;
+	animation: lyfd-menu-fade 1.4s ease 0.3s both;
+}
+.lyfd-nav .is-menu-open::after {
+	content: "";
+	position: absolute;
+	right: -40%;
+	bottom: -12%;
+	width: min(150vw, 640px);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: conic-gradient(from 0deg, transparent 0 60%, rgba(30, 214, 210, 0.7) 90%, transparent 100%);
+	-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+	mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+	pointer-events: none;
+	animation: lyfd-menu-spin 22s linear infinite;
+}
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-close,
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-dialog { position: relative; z-index: 1; }
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-dialog { display: flex; flex-direction: column; min-height: 100%; box-sizing: border-box; }
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-container-content { flex: 1; display: flex; flex-direction: column; padding-top: 96px; }
+
+/* close button */
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-container-close {
+	top: 14px;
+	right: 14px;
+	width: 46px;
+	height: 46px;
+	display: grid;
+	place-items: center;
+	border: 1px solid rgba(201, 211, 216, 0.35);
+	background: rgba(5, 9, 10, 0.5);
+	transition: transform 0.5s var(--lyfd-ease), background-color 0.3s ease, border-color 0.3s ease;
+}
+.lyfd-nav .is-menu-open .wp-block-navigation__responsive-container-close:hover { transform: rotate(90deg); background: var(--lyfd-teal); border-color: var(--lyfd-teal); color: var(--lyfd-obsidian); }
+
+/* brand row (injected) */
+.lyfd-menu-brand { position: absolute; top: 18px; left: var(--lyfd-gutter); display: flex; align-items: center; gap: 12px; animation: lyfd-menu-fade 0.8s ease 0.35s both; }
+.lyfd-menu-brand img { width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 4px 14px rgba(30, 214, 210, 0.45)); }
+.lyfd-menu-brand span { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
+.lyfd-menu-brand strong { font-family: var(--lyfd-font-heading); font-style: italic; font-weight: 800; font-size: 1.5rem; letter-spacing: 0.08em; color: #fff; }
+.lyfd-menu-brand small { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lyfd-teal); }
+
+/* menu items: numbered, 3D flip-in, teal sweep */
+.lyfd-nav .is-menu-open .wp-block-navigation__container { counter-reset: lyfdm; gap: 0 !important; perspective: 900px; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item {
+	counter-increment: lyfdm;
+	width: 100%;
+	border-bottom: 1px solid var(--lyfd-line);
+	transform-origin: 0 100%;
+	animation: lyfd-menu-item 0.9s var(--lyfd-ease) both;
+}
+.lyfd-nav .is-menu-open .wp-block-navigation-item:nth-child(1) { animation-delay: 0.25s; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item:nth-child(2) { animation-delay: 0.33s; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item:nth-child(3) { animation-delay: 0.41s; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item:nth-child(4) { animation-delay: 0.49s; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item:nth-child(5) { animation-delay: 0.57s; }
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content {
+	display: flex;
+	align-items: baseline;
+	gap: 16px;
+	width: 100%;
+	padding: 14px 0;
+	font-size: clamp(1.9rem, 9.4vw, 2.7rem);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	transition: transform 0.5s var(--lyfd-ease), color 0.3s ease;
+}
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content::before {
+	content: counter(lyfdm, decimal-leading-zero);
+	font: 700 0.7rem/1 var(--wp--preset--font-family--body, system-ui);
+	font-style: normal;
+	letter-spacing: 0.2em;
+	color: var(--lyfd-teal);
+	min-width: 1.6em;
+}
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content::after { bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--lyfd-teal), transparent); }
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content:hover,
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content:active,
+
+
+/* quick-contact block (injected) */
+.lyfd-menu-extra { margin-top: auto; padding: 30px 0 max(26px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 10px; width: 100%; animation: lyfd-menu-item 0.9s var(--lyfd-ease) 0.7s both; }
+.lyfd-menu-extra__book {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	margin-bottom: 14px;
+	padding: 1.15em 1em;
+	text-align: center;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--lyfd-obsidian) !important;
+	background: var(--wp--preset--gradient--teal-glow, var(--lyfd-teal));
+	box-shadow: 0 16px 40px -14px rgba(30, 214, 210, 0.7);
+}
+.lyfd-menu-extra__book::after { content: ""; position: absolute; top: -10%; left: -80%; width: 50%; height: 120%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.6), transparent); transform: skewX(-22deg); animation: lyfd-menu-sheen 3.2s ease-in-out 1.4s infinite; }
+.lyfd-menu-extra__label { margin: 0; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lyfd-teal); }
+.lyfd-menu-extra__line { font-size: 1.15rem; font-weight: 600; font-style: normal; text-transform: none; letter-spacing: 0.01em; color: #fff !important; transition: color 0.3s ease, transform 0.4s var(--lyfd-ease); }
+.lyfd-menu-extra__line:hover { color: var(--lyfd-teal) !important; transform: translateX(6px); }
+.lyfd-menu-extra__row { display: flex; gap: 22px; margin-top: 4px; }
+.lyfd-menu-extra__row a { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lyfd-steel) !important; border-bottom: 1px solid var(--lyfd-steel-dark); padding-bottom: 3px; transition: color 0.3s ease, border-color 0.3s ease; }
+.lyfd-menu-extra__row a:hover { color: var(--lyfd-teal) !important; border-color: var(--lyfd-teal); }
+
+@keyframes lyfd-menu-open { from { clip-path: circle(0 at calc(100% - 38px) 38px); } to { clip-path: circle(150% at calc(100% - 38px) 38px); } }
+@keyframes lyfd-menu-item { from { opacity: 0; transform: translate3d(-34px, 28px, -90px) rotateX(-60deg); } to { opacity: 1; transform: none; } }
+@keyframes lyfd-menu-fade { from { opacity: 0; } to { opacity: var(--o, 1); } }
+@keyframes lyfd-menu-spin { to { transform: rotate(360deg); } }
+@keyframes lyfd-menu-sheen { 0%, 55% { left: -80%; } 100% { left: 140%; } }
+@media (prefers-reduced-motion: reduce) {
+	.lyfd-nav .wp-block-navigation__responsive-container.is-menu-open, .lyfd-nav .is-menu-open .wp-block-navigation-item, .lyfd-menu-extra, .lyfd-menu-brand { animation: none; }
+	.lyfd-nav .is-menu-open::after, .lyfd-menu-extra__book::after { animation: none; }
+}
+/* menu: no boxed focus ring on the auto-focused first link (colour + shift show focus instead) */
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content:focus,
+.lyfd-nav .is-menu-open .wp-block-navigation-item__content:focus-visible { outline: none !important; box-shadow: none; color: var(--lyfd-teal) !important; }

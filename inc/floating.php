@@ -28,6 +28,25 @@ add_action(
 		</a>
 		<?php
 
+		?>
+		<template id="lyfd-menu-extra">
+			<div class="lyfd-menu-brand">
+				<img src="<?php echo lyfd_img( 'lyfd-logo.webp' ); ?>" alt="" width="52" height="52">
+				<span><strong>LYFD</strong><small>Stainless Fabrication</small></span>
+			</div>
+			<div class="lyfd-menu-extra">
+				<a class="lyfd-menu-extra__book" href="<?php echo esc_url( home_url( '/#book' ) ); ?>"><span>Book a Visit</span></a>
+				<p class="lyfd-menu-extra__label">Get in touch</p>
+				<a class="lyfd-menu-extra__line" href="tel:+639330648606">0933 064 8606</a>
+				<a class="lyfd-menu-extra__line" href="mailto:info@lyfdfab.com">info@lyfdfab.com</a>
+				<div class="lyfd-menu-extra__row">
+					<a href="<?php echo esc_url( lyfd_messenger_url() ); ?>" target="_blank" rel="noopener noreferrer">Messenger</a>
+					<a href="<?php echo esc_url( LYFD_FB_PAGE_URL ); ?>" target="_blank" rel="noopener noreferrer">Facebook</a>
+				</div>
+			</div>
+		</template>
+		<?php
+
 		if ( ! is_front_page() ) {
 			return;
 		}
