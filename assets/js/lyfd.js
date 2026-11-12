@@ -168,6 +168,9 @@
 		var header = doc.querySelector( '.lyfd-header' );
 		var heroBgs = $$( '.lyfd-hero, .lyfd-page-hero' );
 		var slabs = $$( '.lyfd-scroll3d' );
+		var totop = doc.querySelector( '.lyfd-totop' );
+		var footer = doc.querySelector( '.lyfd-footer' );
+		var mark = doc.querySelector( '.lyfd-footer__mark' );
 
 		var bar = doc.createElement( 'div' );
 		bar.className = 'lyfd-progress';
@@ -183,6 +186,12 @@
 
 			if ( header ) { header.classList.toggle( 'is-scrolled', y > 24 ); }
 			bar.style.setProperty( '--sp', max > 0 ? clamp( y / max, 0, 1 ).toFixed( 4 ) : 0 );
+			root.classList.toggle( 'lyfd-at-end', max > 400 && max - y < 150 );
+			if ( totop ) { totop.style.setProperty( '--sp', max > 0 ? clamp( y / max, 0, 1 ).toFixed( 4 ) : 0 ); }
+			if ( mark && ! reduce ) {
+				var fr = footer.getBoundingClientRect();
+				mark.style.setProperty( '--fp', clamp( ( vh - fr.top ) / ( vh + fr.height ), 0, 1 ).toFixed( 3 ) );
+			}
 
 			if ( ! reduce ) {
 				heroBgs.forEach( function ( h ) {
@@ -213,9 +222,7 @@
 		if ( ! bar || ! grid ) { return; }
 		var items = $$( '.lyfd-product', grid );
 
-		bar.addEventListener( 'click', function ( e ) {
-			var btn = e.target.closest( '.lyfd-filter' );
-			if ( ! btn ) { return; }
+		function apply( btn ) {
 			var key = btn.getAttribute( 'data-filter' );
 			$$( '.lyfd-filter', bar ).forEach( function ( b ) { b.classList.toggle( 'is-active', b === btn ); } );
 			grid.classList.toggle( 'is-filtered', key !== 'all' );
@@ -233,7 +240,24 @@
 					item.classList.add( 'is-shown' );
 				}
 			} );
+		}
+
+		bar.addEventListener( 'click', function ( e ) {
+			var btn = e.target.closest( '.lyfd-filter' );
+			if ( btn ) { apply( btn ); }
 		} );
+
+		// deep links such as /products/#blowers (used by the footer "Our Work" links)
+		function fromHash() {
+			var key = window.location.hash.replace( '#', '' );
+			var btn = key && bar.querySelector( '.lyfd-filter[data-filter="' + key + '"]' );
+			if ( ! btn ) { return; }
+			apply( btn );
+			var sec = doc.getElementById( 'gallery' );
+			if ( sec ) { sec.scrollIntoView( { behavior: reduce ? 'auto' : 'smooth', block: 'start' } ); }
+		}
+		window.addEventListener( 'hashchange', fromHash );
+		fromHash();
 	}
 
 
@@ -513,6 +537,23 @@
 		} );
 	}
 
+
+	/* ---------- footer: back-to-top + cursor-following glow on the wordmark ---------- */
+	function initFooter() {
+		var top = doc.querySelector( '.lyfd-totop' );
+		if ( top ) {
+			top.addEventListener( 'click', function () { window.scrollTo( { top: 0, behavior: reduce ? 'auto' : 'smooth' } ); } );
+		}
+		var mark = doc.querySelector( '.lyfd-footer__mark' );
+		var footer = doc.querySelector( '.lyfd-footer' );
+		if ( ! mark || ! footer || ! finePointer || reduce ) { return; }
+		footer.addEventListener( 'pointermove', function ( e ) {
+			var r = mark.getBoundingClientRect();
+			mark.style.setProperty( '--mx', ( ( e.clientX - r.left ) / r.width * 100 ).toFixed( 1 ) + '%' );
+			mark.style.setProperty( '--my', ( ( e.clientY - r.top ) / r.height * 100 ).toFixed( 1 ) + '%' );
+		} );
+	}
+
 	/* ---------- boot ---------- */
 	function boot() {
 		initSplit();
@@ -526,6 +567,7 @@
 		initPromo();
 		initMenu();
 		initSliders();
+		initFooter();
 		root.classList.add( 'lyfd-ready' );
 	}
 
