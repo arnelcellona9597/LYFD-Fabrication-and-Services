@@ -20,7 +20,7 @@ $book     = esc_url( home_url( '/#book' ) );
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"className":"lyfd-hero__title lyfd-split"} -->
-<h1 class="wp-block-heading lyfd-hero__title lyfd-split">Stainless steel, forged into brilliance.</h1>
+<h1 class="wp-block-heading lyfd-hero__title lyfd-split">Stainless steel,<br>forged into<br>brilliance.</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-hero__lead"} -->
