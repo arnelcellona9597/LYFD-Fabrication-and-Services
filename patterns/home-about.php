@@ -3,17 +3,45 @@
  * Title: LYFD About / Company Profile
  * Slug: lyfd-luxe/home-about
  * Categories: lyfd-luxe
- * Description: Company profile with a 3D steel-framed photo and three brand pillars.
+ * Description: Company profile with a 3D photo slider and three brand pillars.
  */
-$products = esc_url( home_url( '/products/' ) );
+// Slider photos: [file, tag, title, alt]. Add/remove slides by duplicating a slide group in the editor.
+$slides = array(
+	array( 'kitchen-griddle-hood.webp',       'Full Kitchens',    'Kitchen with Griddle & Hood', 'Stainless steel kitchen with griddle station, backsplash and hood fabricated by LYFD' ),
+	array( 'double-sink-counter.webp',        'Counters & Sinks', 'Double-Sink Counter',         'Stainless steel double-sink counter with cabinets' ),
+	array( 'three-burner-counter.webp',       'Cooking Stations', 'Three-Burner Counter',        'Stainless steel three-burner cooking counter' ),
+	array( 'wall-mounted-blower-ducting.webp','Blowers & Ducting','Wall-Mounted Blower',         'Wall-mounted green blower with black ducting' ),
+	array( 'blowers-on-delivery-truck.webp',  'Blowers & Ducting','Blowers Ready for Delivery',  'Three green centrifugal blowers loaded on a delivery truck' ),
+);
 ?>
 <!-- wp:group {"tagName":"section","anchor":"about","align":"full","className":"lyfd-section lyfd-about","layout":{"type":"default"}} -->
 <section id="about" class="wp-block-group alignfull lyfd-section lyfd-about"><!-- wp:group {"className":"lyfd-wrap","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-wrap"><!-- wp:columns {"verticalAlignment":"center","className":"lyfd-about__cols"} -->
 <div class="wp-block-columns are-vertically-aligned-center lyfd-about__cols"><!-- wp:column {"verticalAlignment":"center","width":"48%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:48%"><!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-lyfd-frame lyfd-scroll3d"} -->
-<figure class="wp-block-image size-large is-style-lyfd-frame lyfd-scroll3d"><img src="<?php echo lyfd_img( 'kitchen-griddle-hood.webp' ); ?>" alt="Stainless steel kitchen with griddle station, backsplash and hood fabricated by LYFD"/></figure>
-<!-- /wp:image --></div>
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:48%"><!-- wp:group {"className":"lyfd-slider lyfd-scroll3d","layout":{"type":"default"}} -->
+<div class="wp-block-group lyfd-slider lyfd-scroll3d"><!-- wp:group {"className":"lyfd-slider__track","layout":{"type":"default"}} -->
+<div class="wp-block-group lyfd-slider__track">
+<?php foreach ( $slides as $sl ) : ?>
+<!-- wp:group {"className":"lyfd-slide","layout":{"type":"default"}} -->
+<div class="wp-block-group lyfd-slide"><!-- wp:image {"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="<?php echo lyfd_img( $sl[0] ); ?>" alt="<?php echo esc_attr( $sl[3] ); ?>"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:group {"className":"lyfd-slide__meta","layout":{"type":"default"}} -->
+<div class="wp-block-group lyfd-slide__meta"><!-- wp:paragraph {"className":"lyfd-product__tag"} -->
+<p class="lyfd-product__tag"><?php echo esc_html( $sl[1] ); ?></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"className":"lyfd-product__title"} -->
+<h3 class="wp-block-heading lyfd-product__title"><?php echo esc_html( $sl[2] ); ?></h3>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<?php endforeach; ?>
+</div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"52%"} -->

@@ -42,7 +42,7 @@ Everything is native blocks: **Pages → Home / Products**; header & footer unde
 Matches the logo: **Saira** bold italic (wordmark-style headings) + **Barlow** (body, close to the tagline lettering). Self-hosted in `assets/fonts` (no Google requests).
 
 ## 3D effects (Additional CSS classes)
-`lyfd-reveal` (+ `--left` / `--right`) · `lyfd-stagger` (on a parent) · `lyfd-split` (headings) · `lyfd-tilt` · `lyfd-scroll3d`. Group style **3D Card** / **Brushed Steel Panel**, Image style **Steel Frame (3D)**. Disabled automatically for *prefers-reduced-motion*; tilt only on mouse devices.
+`lyfd-slider` (group > track > slides) · `lyfd-reveal` (+ `--left` / `--right`) · `lyfd-stagger` (on a parent) · `lyfd-split` (headings) · `lyfd-tilt` · `lyfd-scroll3d`. Group style **3D Card** / **Brushed Steel Panel**, Image style **Steel Frame (3D)**. Disabled automatically for *prefers-reduced-motion*; tilt only on mouse devices.
 
 ## Files
 ```

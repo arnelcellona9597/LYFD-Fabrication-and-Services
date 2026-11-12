@@ -366,6 +366,153 @@
 		} );
 	}
 
+
+	/* ---------- slider: 3D coverflow, swipe/drag, arrows, dots, autoplay ---------- */
+	function initSliders() {
+		$$( '.lyfd-slider' ).forEach( function ( root ) {
+			var track = root.querySelector( '.lyfd-slider__track' );
+			var slides = $$( '.lyfd-slide', track );
+			var n = slides.length;
+			if ( ! track || n < 2 ) { return; }
+
+			root.classList.add( 'is-enhanced' );
+			var AUTOPLAY = 5500;
+			root.style.setProperty( '--lyfd-slide-ms', AUTOPLAY + 'ms' );
+
+			slides.forEach( function ( s ) {      // wrap content so only the inner box is transformed
+				var inner = doc.createElement( 'div' );
+				inner.className = 'lyfd-slide__inner';
+				while ( s.firstChild ) { inner.appendChild( s.firstChild ); }
+				s.appendChild( inner );
+			} );
+
+			track.setAttribute( 'tabindex', '0' );
+			track.setAttribute( 'role', 'region' );
+			track.setAttribute( 'aria-roledescription', 'carousel' );
+			track.setAttribute( 'aria-label', 'LYFD project photos' );
+			slides.forEach( function ( s, i ) {
+				s.setAttribute( 'role', 'group' );
+				s.setAttribute( 'aria-roledescription', 'slide' );
+				s.setAttribute( 'aria-label', ( i + 1 ) + ' of ' + n );
+			} );
+
+			/* controls */
+			var ui = doc.createElement( 'div' );
+			ui.className = 'lyfd-slider__ui';
+			ui.innerHTML = '<div class="lyfd-slider__dots" role="tablist" aria-label="Choose photo"></div>' +
+				'<span class="lyfd-slider__count" aria-hidden="true"><b>01</b> / ' + ( n < 10 ? '0' : '' ) + n + '</span>' +
+				'<button type="button" class="lyfd-slider__btn" data-dir="-1" aria-label="Previous photo">&lsaquo;</button>' +
+				'<button type="button" class="lyfd-slider__btn" data-dir="1" aria-label="Next photo">&rsaquo;</button>';
+			root.appendChild( ui );
+			var prog = doc.createElement( 'div' );
+			prog.className = 'lyfd-slider__progress';
+			prog.innerHTML = '<i></i>';
+			root.appendChild( prog );
+
+			var dotsBox = ui.querySelector( '.lyfd-slider__dots' );
+			var count = ui.querySelector( '.lyfd-slider__count b' );
+			var dots = slides.map( function ( s, i ) {
+				var d = doc.createElement( 'button' );
+				d.type = 'button';
+				d.className = 'lyfd-slider__dot';
+				d.setAttribute( 'role', 'tab' );
+				d.setAttribute( 'aria-label', 'Show photo ' + ( i + 1 ) );
+				d.addEventListener( 'click', function () { go( i ); restart(); } );
+				dotsBox.appendChild( d );
+				return d;
+			} );
+
+			var index = 0, raf = null, timer = null, paused = false, visible = false;
+
+			function width() { return track.clientWidth || 1; }
+			function go( i, instant ) {
+				index = ( i + n ) % n;
+				track.scrollTo( { left: index * width(), behavior: ( instant || reduce ) ? 'auto' : 'smooth' } );
+			}
+			function paint() {
+				raf = null;
+				var w = width(), x = track.scrollLeft;
+				var cur = Math.round( x / w );
+				if ( cur !== index || ! dots[ cur ].hasAttribute( 'aria-current' ) ) {
+					index = clamp( cur, 0, n - 1 );
+					dots.forEach( function ( d, i ) {
+						d.setAttribute( 'aria-current', i === index ? 'true' : 'false' );
+						d.setAttribute( 'aria-selected', i === index ? 'true' : 'false' );
+					} );
+					count.textContent = ( index < 9 ? '0' : '' ) + ( index + 1 );
+				}
+				if ( reduce ) { return; }
+				slides.forEach( function ( s, i ) {
+					var o = clamp( ( i * w - x ) / w, -1.2, 1.2 );
+					s.style.setProperty( '--o', o.toFixed( 3 ) );
+					s.style.setProperty( '--ao', Math.abs( o ).toFixed( 3 ) );
+				} );
+			}
+			function queue() { if ( ! raf ) { raf = requestAnimationFrame( paint ); } }
+			track.addEventListener( 'scroll', queue, { passive: true } );
+			window.addEventListener( 'resize', function () { go( index, true ); queue(); } );
+
+			/* buttons + keyboard */
+			ui.addEventListener( 'click', function ( e ) {
+				var b = e.target.closest( '.lyfd-slider__btn' );
+				if ( b ) { go( index + parseInt( b.getAttribute( 'data-dir' ), 10 ) ); restart(); }
+			} );
+			track.addEventListener( 'keydown', function ( e ) {
+				if ( e.key === 'ArrowRight' ) { e.preventDefault(); go( index + 1 ); restart(); }
+				if ( e.key === 'ArrowLeft' ) { e.preventDefault(); go( index - 1 ); restart(); }
+			} );
+
+			/* mouse drag (touch already swipes natively) */
+			var drag = null;
+			track.addEventListener( 'pointerdown', function ( e ) {
+				if ( e.pointerType !== 'mouse' || e.button !== 0 ) { return; }
+				drag = { x: e.clientX, dx: 0, left: track.scrollLeft, start: index, moved: false };
+			} );
+			window.addEventListener( 'pointermove', function ( e ) {
+				if ( ! drag ) { return; }
+				var dx = e.clientX - drag.x;
+				drag.dx = dx;
+				if ( Math.abs( dx ) > 4 ) { drag.moved = true; track.classList.add( 'is-dragging' ); }
+				if ( drag.moved ) { track.scrollLeft = drag.left - dx; }
+			} );
+			window.addEventListener( 'pointerup', function () {
+				if ( ! drag ) { return; }
+				var moved = drag.moved;
+				var dragStart = drag.start;
+				var dragDx = drag.dx;
+				drag = null;
+				if ( moved ) {
+					var w = width();
+					var target = Math.abs( dragDx ) > w * 0.15 ? clamp( dragStart + ( dragDx < 0 ? 1 : -1 ), 0, n - 1 ) : dragStart;
+					track.classList.remove( 'is-dragging' );
+					go( target );
+					restart();
+				}
+			} );
+
+			/* autoplay: pauses on hover/focus/drag, when off-screen or tab hidden, never with reduced motion */
+			function stop() { clearTimeout( timer ); root.classList.remove( 'is-playing' ); }
+			function schedule() {
+				stop();
+				if ( reduce || paused || ! visible || doc.hidden ) { return; }
+				void prog.offsetWidth;                 // restart the CSS progress bar
+				root.classList.add( 'is-playing' );
+				timer = setTimeout( function () { go( index + 1 ); schedule(); }, AUTOPLAY );
+			}
+			function restart() { schedule(); }
+			root.addEventListener( 'mouseenter', function () { paused = true; stop(); } );
+			root.addEventListener( 'mouseleave', function () { paused = false; schedule(); } );
+			root.addEventListener( 'focusin', function () { paused = true; stop(); } );
+			root.addEventListener( 'focusout', function () { paused = false; schedule(); } );
+			doc.addEventListener( 'visibilitychange', schedule );
+			if ( 'IntersectionObserver' in window ) {
+				new IntersectionObserver( function ( en ) { visible = en[ 0 ].isIntersecting; schedule(); }, { threshold: 0.35 } ).observe( root );
+			} else { visible = true; schedule(); }
+
+			paint();
+		} );
+	}
+
 	/* ---------- boot ---------- */
 	function boot() {
 		initSplit();
@@ -378,6 +525,7 @@
 		initReels();
 		initPromo();
 		initMenu();
+		initSliders();
 		root.classList.add( 'lyfd-ready' );
 	}
 

@@ -1451,3 +1451,92 @@ html.has-modal-open .lyfd-fab { opacity: 0 !important; pointer-events: none; tra
 
 /* header nav: no browser/core underline (the teal sweep is the hover cue) */
 .lyfd-nav .wp-block-navigation-item__content, .lyfd-nav .wp-block-navigation-item__content:hover { text-decoration: none !important; }
+
+/* 23. Slider (About) ------------------------------------------------------- */
+.lyfd-slider { position: relative; margin: 0; min-width: 0; isolation: isolate; }
+.lyfd-slider::before {
+	content: "";
+	position: absolute;
+	inset: 26px -26px -26px 26px;
+	border: 1px solid rgba(30, 214, 210, 0.5);
+	z-index: -1;
+	pointer-events: none;
+}
+/* works even without JS: native swipe / scroll-snap row */
+.lyfd-slider__track {
+	display: flex;
+	margin: 0;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	perspective: 1300px;
+	-webkit-overflow-scrolling: touch;
+}
+.lyfd-slider__track::-webkit-scrollbar { display: none; }
+.lyfd-slider__track:focus-visible { outline: 1px solid var(--lyfd-teal); outline-offset: 6px; }
+.lyfd-slide { position: relative; flex: 0 0 100%; min-width: 0; margin: 0; scroll-snap-align: center; scroll-snap-stop: always; box-sizing: border-box; }
+.lyfd-slide > .wp-block-image { margin: 0; padding: 10px; background: var(--wp--preset--gradient--brushed-steel, linear-gradient(135deg, #f5f8f9, #8d9ba2)); box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.lyfd-slide > .wp-block-image img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.lyfd-slide__meta {
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	margin: 0;
+	padding: 70px 22px 20px;
+	background: linear-gradient(0deg, rgba(5, 9, 10, 0.92), rgba(5, 9, 10, 0.5) 60%, transparent);
+	pointer-events: none;
+}
+.lyfd-slide__meta > * { margin: 0; }
+
+/* enhanced (JS): coverflow-style 3D, --o = slide offset (-1…1), --ao = |offset| */
+.lyfd-slider.is-enhanced .lyfd-slider__track { cursor: grab; }
+.lyfd-slider.is-enhanced .lyfd-slider__track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.lyfd-slider.is-enhanced .lyfd-slide { --o: 0; --ao: 0; user-select: none; }
+/* the 3D transform lives on an inner wrapper (added by JS) so scroll-snap keeps measuring the untransformed slide */
+.lyfd-slide__inner { position: relative; }
+.lyfd-slider.is-enhanced .lyfd-slide__inner {
+	transform: rotateY(calc(var(--o) * -34deg)) translateZ(calc(var(--ao) * -160px));
+	opacity: calc(1 - var(--ao) * 0.6);
+	will-change: transform, opacity;
+}
+.lyfd-slider.is-enhanced .lyfd-slide img { -webkit-user-drag: none; pointer-events: none; }
+
+.lyfd-slider__ui { display: flex; align-items: center; gap: 18px; margin-top: 34px; }
+.lyfd-slider__dots { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+.lyfd-slider__dot { width: 26px; height: 4px; padding: 0; border: 0; cursor: pointer; background: rgba(201, 211, 216, 0.28); transition: width 0.5s var(--lyfd-ease), background-color 0.3s ease; position: relative; }
+.lyfd-slider__dot::after { content: ""; position: absolute; inset: -14px -3px; } /* bigger tap target */
+.lyfd-slider__dot:hover { background: rgba(30, 214, 210, 0.6); }
+.lyfd-slider__dot[aria-current="true"] { width: 54px; background: var(--lyfd-teal); box-shadow: 0 0 14px rgba(30, 214, 210, 0.7); }
+.lyfd-slider__count { font: 700 0.75rem/1 var(--wp--preset--font-family--body, system-ui); letter-spacing: 0.2em; color: var(--lyfd-steel); min-width: 4.6em; text-align: right; }
+.lyfd-slider__count b { color: var(--lyfd-teal); font-weight: 700; }
+.lyfd-slider__btn {
+	width: 46px;
+	height: 46px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 1.6rem;
+	line-height: 1;
+	color: #fff;
+	background: transparent;
+	border: 1px solid var(--lyfd-steel-dark);
+	transition: border-color 0.3s ease, color 0.3s ease, transform 0.4s var(--lyfd-ease), background-color 0.3s ease;
+}
+.lyfd-slider__btn:hover { color: var(--lyfd-obsidian); background: var(--lyfd-teal); border-color: var(--lyfd-teal); transform: translateY(-2px); }
+.lyfd-slider__progress { position: absolute; left: 10px; right: 10px; top: 10px; height: 3px; z-index: 2; background: rgba(5, 9, 10, 0.35); pointer-events: none; opacity: 0; transition: opacity 0.3s ease; }
+.lyfd-slider.is-playing .lyfd-slider__progress { opacity: 1; }
+.lyfd-slider__progress i { display: block; height: 100%; width: 100%; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--lyfd-teal-mid), var(--lyfd-teal-bright)); }
+.lyfd-slider.is-playing .lyfd-slider__progress i { animation: lyfd-slider-progress var(--lyfd-slide-ms, 5500ms) linear forwards; }
+@keyframes lyfd-slider-progress { to { transform: scaleX(1); } }
+
+@media (max-width: 782px) {
+	.lyfd-slider::before { inset: 16px -10px -16px 16px; }
+	.lyfd-slider__ui { gap: 12px; margin-top: 26px; }
+	.lyfd-slider__count { display: none; }
+	.lyfd-slider__dot[aria-current="true"] { width: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.lyfd-slider.is-enhanced .lyfd-slide__inner { transform: none; opacity: 1; }
+	.lyfd-slider__progress { display: none; }
+}
