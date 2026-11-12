@@ -16,16 +16,14 @@ Plus, on every page: a floating **Messenger** button (bottom right, opens `m.me/
 3. On activation the theme creates the **Home** and **Products** pages (never overwriting edits), makes Home the front page, sets `/%postname%/` permalinks, sets the time zone to `Asia/Manila`, and removes WordPress' sample page / "Hello world" / draft privacy page so the site has exactly two pages.
 
 ## Email (contact form + bookings) — SMTP
-Messages go to **info@lyfdfab.com**, and are also stored in wp-admin (**Inquiries**, **Bookings**) so nothing is lost if the mail server is down.
+Built into the theme (no plugin needed): **wp-admin → Settings → LYFD Email**.
+It is pre-filled with the LYFD cPanel mailbox — host `mail.lyfdfab.com`, port `465`, SSL, user `info@lyfdfab.com`. **Type the mailbox password once and Save**, then press **Send test email**; if sending fails the mail server's error is shown there.
 
-The SMTP password is **never committed**. On the server add this to `wp-config.php` (above *"That's all, stop editing!"*):
-
-```php
-define( 'LYFD_SMTP_PASS', 'the-email-account-password' );
-```
-Defaults already match the cPanel details: host `mail.lyfdfab.com`, port `465` (SSL), user `info@lyfdfab.com`. Optional overrides: `LYFD_SMTP_HOST`, `LYFD_SMTP_PORT`, `LYFD_SMTP_USER`, `LYFD_MAIL_TO`.
-
-*Alternative:* if the **WP Mail SMTP** plugin is active, the theme leaves mail settings to it (use *Other SMTP*, same host/port/SSL/user).
+- Messages go to **info@lyfdfab.com** (changeable on the same page) and are also stored in wp-admin → **Inquiries** / **Bookings**, so nothing is lost if the mail server is down.
+- The password is stored **encrypted** in the database, never shown again, and never in the repository. If the site moves to a server whose security keys (salts in `wp-config.php`) differ, enter it again.
+- Until a password is saved, WordPress uses PHP `mail()` (on DDEV that lands in Mailpit).
+- Incoming mail (IMAP 993 / POP3 995) is only for Outlook/phone apps — the website only sends.
+- Optional `wp-config.php` overrides (win over the page): `LYFD_SMTP_PASS`, `LYFD_SMTP_HOST`, `LYFD_SMTP_PORT`, `LYFD_SMTP_USER`, `LYFD_MAIL_TO`.
 
 ## Booking calendar
 **Bookings → Settings**: open days, opening/closing time, appointment length, visits per slot, minimum notice, how far ahead, closed dates. Default: Mon–Sat, 9:00–17:00, 1-hour slots — **adjust to the real shop hours**.
@@ -47,7 +45,7 @@ Matches the logo: **Saira** bold italic (wordmark-style headings) + **Barlow** (
 ## Files
 ```
 style.css  theme.json  functions.php
-inc/       mail.php  forms.php  booking.php  floating.php  setup.php
+inc/       mail.php  mail-settings.php  forms.php  booking.php  floating.php  setup.php
 patterns/  header, footer, home-*, products-*
 templates/ front-page.html  page-products.html     parts/  header.html  footer.html
 assets/    css/lyfd.css  js/lyfd.js  js/forms.js  fonts/  images/   (≈2.5 MB total)

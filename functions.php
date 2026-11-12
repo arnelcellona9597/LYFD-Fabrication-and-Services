@@ -10,6 +10,9 @@ defined( 'ABSPATH' ) || exit;
 define( 'LYFD_LUXE_VERSION', wp_get_theme()->get( 'Version' ) ?: '1.0.0' );
 
 require_once get_theme_file_path( 'inc/mail.php' );
+if ( is_admin() ) {
+	require_once get_theme_file_path( 'inc/mail-settings.php' );
+}
 require_once get_theme_file_path( 'inc/forms.php' );
 require_once get_theme_file_path( 'inc/booking.php' );
 require_once get_theme_file_path( 'inc/floating.php' );
