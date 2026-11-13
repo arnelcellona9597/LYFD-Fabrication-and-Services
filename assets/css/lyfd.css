@@ -109,12 +109,23 @@ body.admin-bar:not(.editor-styles-wrapper) .lyfd-header { top: 32px; }
 	border-bottom: 1px solid transparent;
 	transition: background-color 0.5s ease, backdrop-filter 0.5s ease, border-color 0.5s ease;
 }
-.lyfd-header.is-scrolled {
+/* The glass blur lives on a pseudo-element: a backdrop-filter on the header itself would become
+   the containing block of the fixed mobile menu and squash the overlay into the header bar. */
+.lyfd-header::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	opacity: 0;
 	background: rgba(5, 9, 10, 0.74);
 	-webkit-backdrop-filter: blur(18px) saturate(150%);
 	backdrop-filter: blur(18px) saturate(150%);
-	border-bottom-color: var(--lyfd-line);
+	transition: opacity 0.5s ease;
 }
+.lyfd-header.is-scrolled::before { opacity: 1; }
+.lyfd-header { isolation: isolate; }
+.lyfd-header.is-scrolled { border-bottom-color: var(--lyfd-line); }
 .lyfd-header__bar {
 	max-width: 1440px;
 	margin-inline: auto;
@@ -1711,3 +1722,31 @@ html.has-modal-open .lyfd-fab { opacity: 0 !important; pointer-events: none; tra
 /* at the very bottom of the page the footer's own Top button / social links take over from the floating Messenger button */
 html.lyfd-at-end .lyfd-fab { opacity: 0 !important; pointer-events: none; transform: translateY(24px) !important; animation: none; }
 .lyfd-footer__mark span { padding-bottom: 0.1em; }
+
+/* 24. Mobile box sliders (phones): long card stacks become swipeable rows ---- */
+.lyfd-mdots { display: none; }
+@media (max-width: 640px) {
+	.lyfd-mslider {
+		display: flex !important;
+		flex-wrap: nowrap !important;
+		gap: 14px !important;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		margin-inline: calc(var(--lyfd-gutter) * -1) !important;
+		padding: 8px var(--lyfd-gutter) 14px;
+		scroll-padding-inline: var(--lyfd-gutter);
+		-webkit-overflow-scrolling: touch;
+	}
+	.lyfd-mslider::-webkit-scrollbar { display: none; }
+	.lyfd-mslider > * { flex: 0 0 84% !important; max-width: 84%; min-width: 0; height: auto !important; align-self: stretch; scroll-snap-align: center; margin: 0 !important; }
+	.lyfd-mslider.lyfd-steps::before { display: none; }
+	.lyfd-mslider.lyfd-steps > .lyfd-step { padding: 26px 22px; border: 1px solid var(--lyfd-line); background: linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 60%), var(--lyfd-carbon); box-sizing: border-box; }
+	.lyfd-mslider.lyfd-feature-row > .lyfd-product { aspect-ratio: 4 / 5; }
+	.lyfd-mdots { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 4px 0 0; }
+	.lyfd-mdots button { position: relative; width: 22px; height: 4px; padding: 0; border: 0; cursor: pointer; background: rgba(201, 211, 216, 0.28); transition: width 0.45s var(--lyfd-ease), background-color 0.3s ease; }
+	.lyfd-mdots button::after { content: ""; position: absolute; inset: -14px -3px; }
+	.lyfd-mdots button[aria-current="true"] { width: 44px; background: var(--lyfd-teal); box-shadow: 0 0 12px rgba(30, 214, 210, 0.7); }
+	.lyfd-mdots__hint { margin-left: 10px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lyfd-steel-dark); }
+}

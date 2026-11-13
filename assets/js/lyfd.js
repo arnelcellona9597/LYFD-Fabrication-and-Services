@@ -554,6 +554,55 @@
 		} );
 	}
 
+
+	/* ---------- phones: card stacks become swipeable rows with dots ---------- */
+	function initMobileSliders() {
+		var mq = window.matchMedia( '(max-width: 640px)' );
+		$$( '.lyfd-pillars, .lyfd-grid--3, .lyfd-steps, .lyfd-feature-row' ).forEach( function ( box ) {
+			var items = Array.prototype.slice.call( box.children );
+			if ( items.length < 2 ) { return; }
+			box.classList.add( 'lyfd-mslider' );
+			box.setAttribute( 'tabindex', '0' );
+
+			var dots = doc.createElement( 'div' );
+			dots.className = 'lyfd-mdots';
+			dots.setAttribute( 'aria-label', 'Slide position' );
+			items.forEach( function ( item, i ) {
+				var d = doc.createElement( 'button' );
+				d.type = 'button';
+				d.setAttribute( 'aria-label', 'Show item ' + ( i + 1 ) + ' of ' + items.length );
+				d.addEventListener( 'click', function () {
+					box.scrollTo( { left: item.offsetLeft - box.offsetLeft - ( box.clientWidth - item.offsetWidth ) / 2, behavior: reduce ? 'auto' : 'smooth' } );
+				} );
+				dots.appendChild( d );
+			} );
+			var hint = doc.createElement( 'span' );
+			hint.className = 'lyfd-mdots__hint';
+			hint.textContent = 'Swipe';
+			dots.appendChild( hint );
+			box.parentNode.insertBefore( dots, box.nextSibling );
+			var btns = $$( 'button', dots );
+
+			var raf = null;
+			function update() {
+				raf = null;
+				if ( ! mq.matches ) { return; }
+				var mid = box.scrollLeft + box.clientWidth / 2, best = 0, dist = Infinity;
+				items.forEach( function ( item, i ) {
+					var c = item.offsetLeft - box.offsetLeft + item.offsetWidth / 2;
+					if ( Math.abs( c - mid ) < dist ) { dist = Math.abs( c - mid ); best = i; }
+				} );
+				btns.forEach( function ( b, i ) { b.setAttribute( 'aria-current', i === best ? 'true' : 'false' ); } );
+				if ( box.scrollLeft > 10 ) { hint.style.display = 'none'; }
+				// cards revealed by swiping should appear even if the reveal observer missed them
+				items.forEach( function ( item ) { item.classList.add( 'is-inview', 'is-done' ); } );
+			}
+			box.addEventListener( 'scroll', function () { if ( ! raf ) { raf = requestAnimationFrame( update ); } }, { passive: true } );
+			window.addEventListener( 'resize', update );
+			update();
+		} );
+	}
+
 	/* ---------- boot ---------- */
 	function boot() {
 		initSplit();
@@ -568,6 +617,7 @@
 		initMenu();
 		initSliders();
 		initFooter();
+		initMobileSliders();
 		root.classList.add( 'lyfd-ready' );
 	}
 
