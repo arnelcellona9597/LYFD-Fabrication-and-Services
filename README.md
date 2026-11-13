@@ -25,6 +25,14 @@ It is pre-filled with the LYFD cPanel mailbox — host `mail.lyfdfab.com`, port 
 - Incoming mail (IMAP 993 / POP3 995) is only for Outlook/phone apps — the website only sends.
 - Optional `wp-config.php` overrides (win over the page): `LYFD_SMTP_PASS`, `LYFD_SMTP_HOST`, `LYFD_SMTP_PORT`, `LYFD_SMTP_USER`, `LYFD_MAIL_TO`.
 
+## SEO (built in — no Yoast needed)
+- **Per page:** the *SEO — Google & social sharing* box under the page editor (open “Meta Boxes” at the bottom of the block editor): SEO title, meta description with a live Google preview and character counter, share image, “hide from Google”.
+- **Site-wide:** Settings → **LYFD SEO** — business name/phone/email/address/GPS (feeds Google's local-business data), Google Search Console & Bing verification codes, default share image.
+- **Output:** optimised `<title>`, meta description, robots (search/404/attachments noindexed), canonical, Open Graph + Twitter cards (1200×630 `assets/images/og-image.jpg`), JSON-LD (LocalBusiness, WebSite, WebPage/CollectionPage, BreadcrumbList, 16-photo ImageGallery).
+- **Sitemap:** `/wp-sitemap.xml` (pages only, with last-modified dates); `/sitemap.xml` redirects there. **robots.txt** lists the sitemap.
+- Turns itself off automatically if Yoast, Rank Math, SEOPress or AIOSEO is activated.
+- Go-live: untick *Discourage search engines* (Settings → Reading), verify in Google Search Console, submit the sitemap, set up a Google Business Profile.
+
 ## Booking calendar
 **Bookings → Settings**: open days, opening/closing time, appointment length, visits per slot, minimum notice, how far ahead, closed dates. Default: Mon–Sat, 9:00–17:00, 1-hour slots — **adjust to the real shop hours**.
 A request instantly blocks its slot, emails LYFD, and sends the visitor an acknowledgement. In **Bookings** set a request to *Confirmed* (visitor gets a confirmation email) or *Cancelled* (frees the slot).
@@ -45,7 +53,7 @@ Matches the logo: **Saira** bold italic (wordmark-style headings) + **Barlow** (
 ## Files
 ```
 style.css  theme.json  functions.php
-inc/       mail.php  mail-settings.php  forms.php  booking.php  floating.php  setup.php
+inc/       mail.php  mail-settings.php  seo.php  seo-admin.php  forms.php  booking.php  floating.php  setup.php
 patterns/  header, footer, home-*, products-*
 templates/ front-page.html  page-products.html     parts/  header.html  footer.html
 assets/    css/lyfd.css  js/lyfd.js  js/forms.js  fonts/  images/   (≈2.5 MB total)

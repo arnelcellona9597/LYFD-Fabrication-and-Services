@@ -16,6 +16,10 @@ if ( is_admin() ) {
 require_once get_theme_file_path( 'inc/forms.php' );
 require_once get_theme_file_path( 'inc/booking.php' );
 require_once get_theme_file_path( 'inc/floating.php' );
+require_once get_theme_file_path( 'inc/seo.php' );
+if ( is_admin() ) {
+	require_once get_theme_file_path( 'inc/seo-admin.php' );
+}
 require_once get_theme_file_path( 'inc/setup.php' );
 
 /**
