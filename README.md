@@ -19,7 +19,7 @@ Plus, on every page: a floating **Messenger** button (bottom right, opens `m.me/
 Built into the theme (no plugin needed): **wp-admin → Settings → LYFD Email**.
 It is pre-filled with the LYFD cPanel mailbox — host `mail.lyfdfab.com`, port `465`, SSL, user `info@lyfdfab.com`. **Type the mailbox password once and Save**, then press **Send test email**; if sending fails the mail server's error is shown there.
 
-- Messages go to **info@lyfdfab.com** (changeable on the same page) and are also stored in wp-admin → **Inquiries** / **Bookings**, so nothing is lost if the mail server is down.
+- Messages go to **info@lyfdfab.com** and **lyfd.fabrication@gmail.com** (comma-separated list, changeable on the same page) and are also stored in wp-admin → **Inquiries** / **Bookings**, so nothing is lost if the mail server is down.
 - The password is stored **encrypted** in the database, never shown again, and never in the repository. If the site moves to a server whose security keys (salts in `wp-config.php`) differ, enter it again.
 - Until a password is saved, WordPress uses PHP `mail()` (on DDEV that lands in Mailpit).
 - Incoming mail (IMAP 993 / POP3 995) is only for Outlook/phone apps — the website only sends.

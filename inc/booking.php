@@ -357,7 +357,7 @@ add_action(
 					'Your LYFD appointment is confirmed',
 					"Hi $name,\n\nYour appointment with LYFD Stainless Fabrication and Services is confirmed:\n\n  " . lyfd_booking_when( $post_id )
 					. "\n\nIf you need to change the schedule, just reply to this email or message us on Facebook.\n\nSee you soon!\nLYFD Stainless Fabrication and Services\nDavao City, Philippines\n",
-					lyfd_mail_to()
+					lyfd_mail_reply_to()
 				);
 			}
 		}
@@ -590,7 +590,7 @@ function lyfd_handle_booking() {
 		$email,
 		'We received your appointment request — LYFD',
 		"Hi $name,\n\nThank you for booking with LYFD Stainless Fabrication and Services.\n\nRequested: $when\nPurpose:   $purpose_label\n\nWe will confirm your appointment shortly. If you need to change anything, just reply to this email or message us on Facebook.\n\nLYFD Stainless Fabrication and Services\nDavao City, Philippines\n",
-		lyfd_mail_to()
+		lyfd_mail_reply_to()
 	);
 
 	lyfd_form_respond( true, "Thank you, $name! We received your request for $when. We will confirm it by email shortly.", 'book', 'book', array( 'when' => $when ) );

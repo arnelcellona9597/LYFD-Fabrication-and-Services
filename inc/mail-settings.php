@@ -57,7 +57,7 @@ function lyfd_mail_sanitize( $in ) {
 		'pass_enc'   => $pass,
 		'from_email' => $email( isset( $in['from_email'] ) ? $in['from_email'] : '', $d['from_email'] ),
 		'from_name'  => sanitize_text_field( isset( $in['from_name'] ) ? $in['from_name'] : $d['from_name'] ),
-		'to_email'   => $email( isset( $in['to_email'] ) ? $in['to_email'] : '', $d['to_email'] ),
+		'to_email'   => implode( ', ', lyfd_parse_emails( isset( $in['to_email'] ) ? $in['to_email'] : '' ) ) ?: $d['to_email'],
 	);
 }
 
@@ -75,6 +75,7 @@ add_action(
 		if ( ! is_email( $to ) ) {
 			$to = lyfd_mail_to();
 		}
+		$to_label = is_array( $to ) ? implode( ', ', $to ) : $to;
 		unset( $GLOBALS['lyfd_last_mail_error'] );
 		$ok = lyfd_send_mail(
 			$to,
@@ -86,7 +87,7 @@ add_action(
 			array(
 				'ok'  => (bool) $ok,
 				'msg' => $ok
-					? 'Test email sent to ' . $to . '. Check that inbox (and spam).'
+					? 'Test email sent to ' . $to_label . '. Check that inbox (and spam).'
 					: 'Sending failed' . ( isset( $GLOBALS['lyfd_last_mail_error'] ) ? ': ' . $GLOBALS['lyfd_last_mail_error'] : '.' ),
 			),
 			120
@@ -153,7 +154,7 @@ function lyfd_mail_settings_page() {
 				</td></tr>
 				<tr><th><label for="lm-from">“From” email</label></th><td><input type="email" class="regular-text" id="lm-from" name="<?php echo esc_attr( $opt ); ?>[from_email]" value="<?php echo esc_attr( $s['from_email'] ); ?>"><p class="description">Should be the same mailbox as the username, or the server may reject the message.</p></td></tr>
 				<tr><th><label for="lm-name">“From” name</label></th><td><input type="text" class="regular-text" id="lm-name" name="<?php echo esc_attr( $opt ); ?>[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>"></td></tr>
-				<tr><th><label for="lm-to">Send inquiries &amp; bookings to</label></th><td><input type="email" class="regular-text" id="lm-to" name="<?php echo esc_attr( $opt ); ?>[to_email]" value="<?php echo esc_attr( $s['to_email'] ); ?>" <?php disabled( defined( 'LYFD_MAIL_TO' ) ); ?>></td></tr>
+				<tr><th><label for="lm-to">Send inquiries &amp; bookings to</label></th><td><input type="text" class="large-text" id="lm-to" name="<?php echo esc_attr( $opt ); ?>[to_email]" value="<?php echo esc_attr( $s['to_email'] ); ?>" <?php disabled( defined( 'LYFD_MAIL_TO' ) ); ?>><p class="description">One or more addresses, separated by commas. Every address receives each inquiry and booking request.</p></td></tr>
 			</table>
 			<p class="description">Incoming mail (IMAP 993 / POP3 995 on mail.lyfdfab.com) is only needed in an email app such as Outlook or a phone — the website only <em>sends</em> email.</p>
 			<?php submit_button( 'Save settings' ); ?>

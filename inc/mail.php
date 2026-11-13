@@ -36,7 +36,7 @@ function lyfd_mail_defaults() {
 		'user'       => 'info@lyfdfab.com',
 		'from_email' => 'info@lyfdfab.com',
 		'from_name'  => 'LYFD Stainless Fabrication',
-		'to_email'   => 'info@lyfdfab.com', // inbox that receives inquiries and booking requests.
+		'to_email'   => 'info@lyfdfab.com, lyfd.fabrication@gmail.com', // comma-separated inboxes for inquiries and booking requests.
 	);
 }
 
@@ -115,11 +115,29 @@ function lyfd_smtp_enabled() {
 	return $status[0];
 }
 
-/** Address that receives contact messages and booking requests. */
+/** Parse a comma/semicolon/space separated list into unique valid emails. */
+function lyfd_parse_emails( $list ) {
+	$out = array();
+	foreach ( preg_split( '/[\s,;]+/', (string) $list ) as $e ) {
+		$e = sanitize_email( $e );
+		if ( is_email( $e ) && ! in_array( strtolower( $e ), array_map( 'strtolower', $out ), true ) ) {
+			$out[] = $e;
+		}
+	}
+	return $out;
+}
+
+/** Inboxes that receive contact messages and booking requests (array). */
 function lyfd_mail_to() {
 	$s  = lyfd_mail_settings();
-	$to = is_email( $s['to_email'] );
-	return $to ? $to : 'info@lyfdfab.com';
+	$to = lyfd_parse_emails( $s['to_email'] );
+	return $to ? $to : lyfd_parse_emails( lyfd_mail_defaults()['to_email'] );
+}
+
+/** Single address visitors reply to (first recipient). */
+function lyfd_mail_reply_to() {
+	$to = lyfd_mail_to();
+	return $to[0];
 }
 
 /* ---------------------------------------------------------------------------
