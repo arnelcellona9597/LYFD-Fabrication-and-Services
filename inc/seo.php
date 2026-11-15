@@ -29,6 +29,7 @@ function lyfd_seo_defaults() {
 		'business_type' => 'HomeAndConstructionBusiness',
 		'phone'         => '+63 933 064 8606',
 		'email'         => 'info@lyfdfab.com',
+		'email2'        => 'lyfd.fabrication@gmail.com',
 		'street'        => '',
 		'city'          => 'Davao City',
 		'region'        => 'Davao del Sur',
@@ -296,6 +297,7 @@ add_action(
 				'image'       => get_theme_file_uri( 'assets/images/og-image.jpg' ),
 				'telephone'   => $s['phone'],
 				'email'       => $s['email'],
+				'contactPoint' => $s['email2'] ? array( '@type' => 'ContactPoint', 'contactType' => 'customer service', 'email' => $s['email2'], 'telephone' => $s['phone'], 'areaServed' => 'PH', 'availableLanguage' => array( 'English', 'Filipino' ) ) : null,
 				'address'     => $address,
 				'geo'         => ( $s['lat'] && $s['lng'] ) ? array( '@type' => 'GeoCoordinates', 'latitude' => (float) $s['lat'], 'longitude' => (float) $s['lng'] ) : null,
 				'areaServed'  => array(

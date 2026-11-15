@@ -125,6 +125,7 @@ add_action(
 						$val = isset( $in[ $k ] ) ? trim( (string) $in[ $k ] ) : $v;
 						switch ( $k ) {
 							case 'email':
+							case 'email2':
 								$val = is_email( $val ) ? sanitize_email( $val ) : $d['email'];
 								break;
 							case 'facebook':
@@ -200,6 +201,7 @@ function lyfd_seo_settings_page() {
 				$row( 'business_name', 'Business name' );
 				$row( 'phone', 'Phone', 'International format, e.g. +63 933 064 8606.' );
 				$row( 'email', 'Email', '', 'email' );
+				$row( 'email2', 'Second email', 'Optional, e.g. the Gmail address.', 'email' );
 				$row( 'street', 'Street address', 'Optional. Add it if the workshop accepts walk-in visits.' );
 				$row( 'city', 'City' );
 				$row( 'region', 'Province / region' );

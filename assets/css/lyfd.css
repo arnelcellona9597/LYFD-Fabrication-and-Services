@@ -1750,3 +1750,6 @@ html.lyfd-at-end .lyfd-fab { opacity: 0 !important; pointer-events: none; transf
 	.lyfd-mdots button[aria-current="true"] { width: 44px; background: var(--lyfd-teal); box-shadow: 0 0 12px rgba(30, 214, 210, 0.7); }
 	.lyfd-mdots__hint { margin-left: 10px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lyfd-steel-dark); }
 }
+
+.lyfd-contact__value--emails { font-size: 1.05rem; line-height: 1.55; overflow-wrap: anywhere; }
+.lyfd-reach a, .lyfd-menu-extra__line { overflow-wrap: anywhere; }

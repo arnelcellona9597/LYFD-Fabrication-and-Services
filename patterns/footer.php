@@ -108,6 +108,7 @@ $msg      = esc_url( lyfd_messenger_url() );
 	<li><div class="lyfd-reach__row"><span class="lyfd-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Workshop</small>Davao City, Philippines</span></div></li>
 	<li><a href="tel:+639330648606"><span class="lyfd-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><small>Call / text</small>0933 064 8606</span></a></li>
 	<li><a href="mailto:info@lyfdfab.com"><span class="lyfd-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>Email</small>info@lyfdfab.com</span></a></li>
+	<li><a href="mailto:lyfd.fabrication@gmail.com"><span class="lyfd-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>Email (Gmail)</small>lyfd.fabrication@gmail.com</span></a></li>
 	<li><a href="<?php echo $book; ?>"><span class="lyfd-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><small>Visits</small>By appointment &mdash; book online</span></a></li>
 </ul>
 <!-- /wp:html --></div>

@@ -30,7 +30,7 @@ $fb = esc_url( 'https://www.facebook.com/profile.php?id=61595745041102' );
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lyfd-contact__value"} -->
-<p class="lyfd-contact__value"><a href="mailto:info@lyfdfab.com">info@lyfdfab.com</a></p>
+<p class="lyfd-contact__value lyfd-contact__value--emails"><a href="mailto:info@lyfdfab.com">info@lyfdfab.com</a><br><a href="mailto:lyfd.fabrication@gmail.com">lyfd.fabrication@gmail.com</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
