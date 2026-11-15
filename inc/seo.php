@@ -42,6 +42,8 @@ function lyfd_seo_defaults() {
 		'bing_verify'   => '',
 		'share_image'   => '', // empty → assets/images/og-image.jpg.
 		'title_sep'     => '|',
+		'tracking_id'   => 'GTM-NQK5488Q', // Google Tag Manager container (or a GA4 'G-…' ID). Empty = no tracking.
+		'track_admins'  => '',
 	);
 }
 

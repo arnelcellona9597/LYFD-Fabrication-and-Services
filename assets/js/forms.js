@@ -68,7 +68,16 @@
 		} );
 	}
 
-	$$( '.lyfd-form--contact' ).forEach( function ( f ) { enhanceForm( f ); } );
+	function lead( kind ) {
+		( window.dataLayer = window.dataLayer || [] ).push( { event: 'generate_lead', form: kind } );
+	}
+
+	$$( '.lyfd-form--contact' ).forEach( function ( f ) {
+		enhanceForm( f, function ( res ) {
+			showStatus( f, res.ok, res.message );
+			if ( res.ok ) { f.reset(); lead( 'contact' ); }
+		} );
+	} );
 
 	/* ---------- booking calendar ---------- */
 	$$( '.lyfd-book' ).forEach( function ( root ) {
@@ -220,6 +229,7 @@
 
 		enhanceForm( form, function ( res ) {
 			if ( res.ok ) {
+				lead( 'booking' );
 				$( '.lyfd-book__done-msg', done ).textContent = res.message;
 				cache = {};
 				show( done );

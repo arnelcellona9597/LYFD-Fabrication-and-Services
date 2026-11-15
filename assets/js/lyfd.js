@@ -11,6 +11,24 @@
 	var reduce = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 	var finePointer = window.matchMedia && window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches;
 
+	/* analytics: push friendly events to the dataLayer (used by GTM/GA4 triggers; harmless without it) */
+	window.dataLayer = window.dataLayer || [];
+	function track( name, params ) {
+		var e = { event: name };
+		for ( var k in params ) { if ( Object.prototype.hasOwnProperty.call( params, k ) ) { e[ k ] = params[ k ]; } }
+		window.dataLayer.push( e );
+	}
+	window.lyfdTrack = track;
+	doc.addEventListener( 'click', function ( ev ) {
+		var a = ev.target.closest && ev.target.closest( 'a[href]' );
+		if ( ! a ) { return; }
+		var href = a.getAttribute( 'href' ) || '';
+		if ( 0 === href.indexOf( 'tel:' ) ) { track( 'click_to_call', { phone: href.slice( 4 ) } ); }
+		else if ( 0 === href.indexOf( 'mailto:' ) ) { track( 'click_email', { email: href.slice( 7 ) } ); }
+		else if ( href.indexOf( 'm.me/' ) > -1 ) { track( 'messenger_click', { location: a.closest( '.lyfd-fab' ) ? 'floating_button' : 'page' } ); }
+		else if ( a.closest( '.lyfd-promo' ) ) { track( 'popup_view_products' ); }
+	}, true );
+
 	function $$( sel, ctx ) { return Array.prototype.slice.call( ( ctx || doc ).querySelectorAll( sel ) ); }
 	function clamp( v, a, b ) { return Math.min( b, Math.max( a, v ) ); }
 
@@ -224,6 +242,7 @@
 
 		function apply( btn ) {
 			var key = btn.getAttribute( 'data-filter' );
+			track( 'gallery_filter', { filter: key } );
 			$$( '.lyfd-filter', bar ).forEach( function ( b ) { b.classList.toggle( 'is-active', b === btn ); } );
 			grid.classList.toggle( 'is-filtered', key !== 'all' );
 
@@ -269,6 +288,7 @@
 			btn.addEventListener( 'click', function () {
 				var src = box.getAttribute( 'data-src' );
 				if ( ! src ) { return; }
+				track( 'reel_play', { reel_url: src } );
 				var w = Math.round( box.getBoundingClientRect().width ) || 270;
 				var iframe = doc.createElement( 'iframe' );
 				iframe.src = 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent( src ) +

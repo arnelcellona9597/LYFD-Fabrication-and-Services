@@ -33,6 +33,13 @@ It is pre-filled with the LYFD cPanel mailbox — host `mail.lyfdfab.com`, port 
 - Turns itself off automatically if Yoast, Rank Math, SEOPress or AIOSEO is activated.
 - Go-live: untick *Discourage search engines* (Settings → Reading), verify in Google Search Console, submit the sitemap, set up a Google Business Profile.
 
+## Analytics (Google Tag Manager / GA4)
+**Settings → LYFD SEO → Analytics & tracking.** Paste a GTM container ID (`GTM-NQK5488Q` is pre-set) or a GA4 ID (`G-…`), or the whole Google snippet — the ID is picked out. Clear the field to turn tracking off.
+- GTM gets the standard head script plus `<noscript>` fallback; GA4/Ads IDs use gtag.js.
+- Never loads in wp-admin, for logged-in editors (tick the box to include them), on local/test hosts, or while *Discourage search engines* is on — so it switches on by itself on the live domain once that box is unticked.
+- With GTM, GA4 data needs a *Google tag* (G- measurement ID) inside the container, and the container must be **published**.
+- Events pushed to `dataLayer` for GTM triggers: `generate_lead` (`form`: contact | booking), `click_to_call`, `click_email`, `messenger_click`, `reel_play`, `gallery_filter`, `popup_view_products`.
+
 ## Booking calendar
 **Bookings → Settings**: open days, opening/closing time, appointment length, visits per slot, minimum notice, how far ahead, closed dates. Default: Mon–Sat, 9:00–17:00, 1-hour slots — **adjust to the real shop hours**.
 A request instantly blocks its slot, emails LYFD, and sends the visitor an acknowledgement. In **Bookings** set a request to *Confirmed* (visitor gets a confirmation email) or *Cancelled* (frees the slot).
@@ -53,7 +60,7 @@ Matches the logo: **Saira** bold italic (wordmark-style headings) + **Barlow** (
 ## Files
 ```
 style.css  theme.json  functions.php
-inc/       mail.php  mail-settings.php  seo.php  seo-admin.php  forms.php  booking.php  floating.php  setup.php
+inc/       mail.php  mail-settings.php  seo.php  seo-admin.php  analytics.php  forms.php  booking.php  floating.php  setup.php
 patterns/  header, footer, home-*, products-*
 templates/ front-page.html  page-products.html     parts/  header.html  footer.html
 assets/    css/lyfd.css  js/lyfd.js  js/forms.js  fonts/  images/   (≈2.5 MB total)

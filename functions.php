@@ -17,6 +17,7 @@ require_once get_theme_file_path( 'inc/forms.php' );
 require_once get_theme_file_path( 'inc/booking.php' );
 require_once get_theme_file_path( 'inc/floating.php' );
 require_once get_theme_file_path( 'inc/seo.php' );
+require_once get_theme_file_path( 'inc/analytics.php' );
 if ( is_admin() ) {
 	require_once get_theme_file_path( 'inc/seo-admin.php' );
 }

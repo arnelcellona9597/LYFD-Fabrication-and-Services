@@ -144,6 +144,12 @@ add_action(
 								}
 								$val = preg_replace( '/[^A-Za-z0-9_\-]/', '', $val );
 								break;
+							case 'tracking_id':
+								$val = lyfd_extract_tracking_id( $val ); // bare ID, or the whole pasted snippet.
+								break;
+							case 'track_admins':
+								$val = empty( $in[ $k ] ) ? '' : '1';
+								break;
 							case 'business_type':
 								$val = preg_replace( '/[^A-Za-z]/', '', $val );
 								$val = $val ? $val : $d['business_type'];
@@ -222,6 +228,20 @@ function lyfd_seo_settings_page() {
 				$row( 'title_sep', 'Title separator', 'Character between page name and site name, e.g. | or –' );
 				?>
 			</table>
+			<h2>Analytics &amp; tracking</h2>
+			<?php $track = lyfd_tracking_status(); ?>
+			<p><strong>Status:</strong> <span style="color:<?php echo $track[0] ? '#1a7f37' : '#b45309'; ?>">&#9679;</span> <?php echo esc_html( $track[1] ); ?></p>
+			<table class="form-table" role="presentation">
+				<?php
+				$row( 'tracking_id', 'Google tag ID', 'Paste your <strong>Google Tag Manager</strong> container ID (<code>GTM-XXXXXXX</code>) <em>or</em> a <strong>GA4 measurement ID</strong> (<code>G-XXXXXXXXXX</code>) — or paste the whole snippet from Google and the ID is picked out for you. Leave empty to turn tracking off.' );
+				printf(
+					'<tr><th>Team visits</th><td><label><input type="checkbox" name="%s[track_admins]" value="1" %s> Also count visits from logged-in editors/admins</label><p class="description">Off by default so your own testing does not show up in reports.</p></td></tr>',
+					esc_attr( $opt ),
+					checked( ! empty( $s['track_admins'] ), true, false )
+				);
+				?>
+			</table>
+			<p class="description">If you use a <strong>GTM</strong> container, GA4 data only flows once that container contains a <em>Google tag</em> / <em>GA4 configuration</em> tag with your G- measurement ID and the container is <strong>published</strong>. The site pushes these events to the <code>dataLayer</code> for you to use as triggers: <code>generate_lead</code> (contact form / booking), <code>click_to_call</code>, <code>click_email</code>, <code>messenger_click</code>, <code>reel_play</code>, <code>gallery_filter</code>, <code>popup_view_products</code>.</p>
 			<?php submit_button(); ?>
 		</form>
 		<h2>After going live</h2>
