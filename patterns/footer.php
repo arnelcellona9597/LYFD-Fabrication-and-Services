@@ -122,7 +122,7 @@ $msg      = esc_url( lyfd_messenger_url() );
 
 <!-- wp:group {"className":"lyfd-footer__bar","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-footer__bar"><!-- wp:paragraph {"className":"lyfd-footer__legal"} -->
-<p class="lyfd-footer__legal">&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> LYFD Stainless Fabrication and Services. All rights reserved.</p>
+<p class="lyfd-footer__legal">&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> LYFD Stainless Fabrication and Services. All rights reserved.<span class="lyfd-footer__credit">Design &amp; developed by <a href="https://davaobyte.com" target="_blank" rel="noopener">davaobyte.com</a></span></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:html -->

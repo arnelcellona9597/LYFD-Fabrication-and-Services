@@ -1013,6 +1013,9 @@ body.admin-bar:not(.editor-styles-wrapper) .lyfd-header { top: 32px; }
 .lyfd-footer__bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: clamp(30px, 4vw, 56px); padding-top: 22px; border-top: 1px solid var(--lyfd-line); }
 .lyfd-footer__bar > * { margin: 0; }
 .lyfd-footer__legal { font-size: 0.8rem; color: var(--lyfd-steel-dark) !important; letter-spacing: 0.04em; }
+.lyfd-footer__credit { display: block; margin-top: 6px; }
+.lyfd-footer__credit a { color: var(--lyfd-accent, #1ED6D2) !important; text-decoration: none; font-weight: 600; transition: opacity .2s; }
+.lyfd-footer__credit a:hover { opacity: .75; text-decoration: underline; }
 
 /* back to top, ringed with scroll progress */
 .lyfd-totop {
