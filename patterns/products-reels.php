@@ -6,11 +6,11 @@
  * Description: Click-to-play Facebook reels. The Facebook player only loads after a click (faster page, no tracking until then). To add a reel: copy a card, then change the reel URL in the HTML block and the poster image.
  */
 $reels = array(
-	array( '1416817723946368', 'reel-1.webp', 'Reel 01' ),
-	array( '1898022618235899', 'reel-2.webp', 'Reel 02' ),
-	array( '1431586745805838', 'reel-3.webp', 'Reel 03' ),
-	array( '1147742731115859', 'reel-4.webp', 'Reel 04' ),
-	array( '4194695164154407', 'reel-4.webp', 'Reel 05' ),
+	array( '1450446596636319', 'reel-wok-flame.webp', 'Heavy-Duty Wok Range' ),
+	array( '1118431334123480', 'reel-custom-fabrication.webp', 'Custom Stainless Fabrication' ),
+	array( '29036316936019920', 'reel-turning-ideas.webp', 'Turning Ideas into Reality' ),
+	array( '1416817723946368', 'reel-water-tanker.webp', 'Heavy-Duty Water Tanker' ),
+	array( '1898022618235899', 'reel-display-counter.webp', 'Display Counter Delivered' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","anchor":"videos","align":"full","className":"lyfd-section lyfd-videos","layout":{"type":"default"}} -->

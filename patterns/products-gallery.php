@@ -3,25 +3,19 @@
  * Title: LYFD Product Gallery (filterable)
  * Slug: lyfd-luxe/products-gallery
  * Categories: lyfd-luxe
- * Description: Filterable photo gallery with lightbox. Category = the lyfd-cat-* class (kitchens, counters, cooking, blowers); is-wide / is-tall make a card span 2 columns / 2 rows.
+ * Description: Filterable photo gallery with lightbox. Category = the lyfd-cat-* class (kitchens, counters, cooking, blowers = Hoods & Exhaust); is-wide / is-tall make a card span 2 columns / 2 rows.
  */
 $items = array(
-	array( 'commercial-kitchen.webp', 'kitchens', 'Full Kitchens', 'Complete Stainless Kitchen', 'Complete stainless steel commercial kitchen with work tables, cooking stations and exhaust hood', 'is-wide is-tall' ),
-	array( 'sink-counter-backsplash.webp', 'counters', 'Counters & Sinks', 'Sink Counter with Backsplash', 'Stainless steel sink counter with backsplash and cabinet', '' ),
-	array( 'double-sink-counter.webp', 'counters', 'Counters & Sinks', 'Double-Sink Counter', 'Stainless steel double-sink counter with cabinets', 'is-wide' ),
-	array( 'rooftop-ducting-blower.webp', 'blowers', 'Blowers & Ducting', 'Rooftop Ducting & Blower', 'Red ducting and green blower installed on a rooftop', 'is-tall' ),
-	array( 'wall-mounted-blower-ducting.webp', 'blowers', 'Blowers & Ducting', 'Wall-Mounted Blower', 'Wall-mounted green blower with black ducting', '' ),
-	array( 'rooftop-exhaust-ducting.webp', 'blowers', 'Blowers & Ducting', 'Rooftop Exhaust Ducting', 'Galvanized exhaust ducting and green blower on a rooftop', 'is-tall' ),
-	array( 'rooftop-blower-installation.webp', 'blowers', 'Blowers & Ducting', 'Rooftop Blower Installation', 'Green blower with ducting installed on a building roof', 'is-tall' ),
-	array( 'balcony-blower-unit.webp', 'blowers', 'Blowers & Ducting', 'Balcony Blower Unit', 'Green belt-driven blower unit mounted on a balcony frame', 'is-tall' ),
-	array( 'two-burner-stove.webp', 'cooking', 'Cooking Stations', 'Two-Burner Stove Station', 'Stainless steel two-burner stove station', 'is-tall' ),
-	array( 'blowers-on-delivery-truck.webp', 'blowers', 'Blowers & Ducting', 'Blowers Ready for Delivery', 'Three green centrifugal blowers loaded on a delivery truck', 'is-wide' ),
-	array( 'corner-cabinets-sink.webp', 'kitchens', 'Full Kitchens', 'Corner Cabinets & Sink', 'Stainless steel corner cabinets with sink and wall cabinets', '' ),
-	array( 'kitchen-griddle-hood.webp', 'kitchens', 'Full Kitchens', 'Kitchen with Griddle & Hood', 'Stainless steel kitchen with griddle station, backsplash and hood', '' ),
-	array( 'three-burner-counter.webp', 'cooking', 'Cooking Stations', 'Three-Burner Counter', 'Stainless steel three-burner cooking counter', '' ),
-	array( 'counter-with-drawers.webp', 'counters', 'Counters & Sinks', 'Counter with Drawers', 'Stainless steel counter with drawers and cabinets', 'is-wide' ),
-	array( 'green-centrifugal-blowers.webp', 'blowers', 'Blowers & Ducting', 'Centrifugal Blowers', 'Green centrifugal blowers with blue motors', '' ),
-	array( 'kitchen-cabinets-window.webp', 'kitchens', 'Full Kitchens', 'Cabinet & Counter Run', 'Stainless steel cabinets and counter run beside a window', 'is-wide' ),
+	array( 'kitchen-island-hood-line.webp', 'kitchens', 'Full Kitchens', 'Kitchen Island with Hood Line', 'Stainless steel kitchen island with shelf and exhaust hood line', 'is-wide is-tall' ),
+	array( 'hood-grill-station.webp', 'cooking', 'Cooking Stations', 'Grill Station with Hood', 'Stainless steel grill station under an exhaust hood', '' ),
+	array( 'steel-shelving-racks.webp', 'kitchens', 'Full Kitchens', 'Stainless Shelving Racks', 'Stainless steel wall shelving racks in a new kitchen', '' ),
+	array( 'triple-sink-table.webp', 'counters', 'Counters & Sinks', 'Triple-Sink Work Table', 'Stainless steel triple-sink work table with shelving', 'is-wide' ),
+	array( 'full-kitchen-hall.webp', 'kitchens', 'Full Kitchens', 'Complete Kitchen Fit-Out', 'Complete stainless steel commercial kitchen fit-out', 'is-wide' ),
+	array( 'counter-heat-lamps.webp', 'counters', 'Counters & Sinks', 'Counter with Heat Lamps', 'Stainless steel food-service counter with heat lamps', '' ),
+	array( 'three-burner-wok-range.webp', 'cooking', 'Cooking Stations', 'Three-Burner Wok Range', 'Heavy-duty stainless steel three-burner wok range', '' ),
+	array( 'hood-wok-line.webp', 'blowers', 'Hoods & Exhaust', 'Hood & Wok Cooking Line', 'Stainless steel exhaust hood above a wok cooking line', 'is-wide' ),
+	array( 'shelving-racks-wide.webp', 'kitchens', 'Full Kitchens', 'Stainless Storage Racks', 'Stainless steel storage racks', '' ),
+	array( 'long-work-tables-sinks.webp', 'counters', 'Counters & Sinks', 'Long Work Tables & Sinks', 'Long stainless steel work tables with sinks', '' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","anchor":"gallery","align":"full","className":"lyfd-section lyfd-gallery-section","layout":{"type":"default"}} -->
@@ -42,7 +36,7 @@ $items = array(
 	<button type="button" class="lyfd-filter" data-filter="kitchens">Full Kitchens</button>
 	<button type="button" class="lyfd-filter" data-filter="counters">Counters &amp; Sinks</button>
 	<button type="button" class="lyfd-filter" data-filter="cooking">Cooking Stations</button>
-	<button type="button" class="lyfd-filter" data-filter="blowers">Blowers &amp; Ducting</button>
+	<button type="button" class="lyfd-filter" data-filter="blowers">Hoods &amp; Exhaust</button>
 </div>
 <!-- /wp:html -->
 

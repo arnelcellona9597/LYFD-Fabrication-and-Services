@@ -29,7 +29,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Prep tables, serving counters and overhead shelving sized exactly to your kitchen line.</p>
+<p class="lyfd-card__text">Prep tables, food-service counters, cashier&rsquo;s drawers and overhead shelving sized exactly to your kitchen line.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -43,7 +43,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Commercial exhaust hoods engineered for strong extraction and a seamless stainless finish.</p>
+<p class="lyfd-card__text">Commercial exhaust hoods and ventilation engineered for strong extraction and a seamless stainless finish.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -57,7 +57,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Fabricated ducting and custom centrifugal blowers, routed and installed on site.</p>
+<p class="lyfd-card__text">Fabricated ducting, exhaust and ventilation systems and custom centrifugal blowers, routed and installed on site.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -71,7 +71,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Burner stands, wok stations and backsplashes built tough for high-heat daily service.</p>
+<p class="lyfd-card__text">Burner stands, wok stations and backsplashes for restaurant, bakery, hospital and industrial kitchens, built tough for high-heat daily service.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -85,7 +85,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Hygienic wash stations, cabinets and under-shelf storage that keep a kitchen organised.</p>
+<p class="lyfd-card__text">Hygienic wash stations, cabinets and storage racks for hotels, restaurants, hospitals, supermarkets, malls and homes.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -99,7 +99,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Custom welding and metal works for any project that needs strength and a premium finish.</p>
+<p class="lyfd-card__text">Steel fabrication and installation &mdash; trusses, industrial tanks, cladding and signages, architectural railings, steel frames and gates.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

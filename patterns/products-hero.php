@@ -9,7 +9,7 @@ $gallery = esc_url( '#gallery' );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lyfd-page-hero","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull lyfd-page-hero"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"lyfd-page-hero__bg"} -->
-<figure class="wp-block-image size-full lyfd-page-hero__bg"><img src="<?php echo lyfd_img( 'blowers-on-delivery-truck.webp' ); ?>" alt=""/></figure>
+<figure class="wp-block-image size-full lyfd-page-hero__bg"><img src="<?php echo lyfd_img( 'hood-wok-line.webp' ); ?>" alt=""/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lyfd-wrap lyfd-page-hero__inner","layout":{"type":"default"}} -->

@@ -30,7 +30,7 @@ function lyfd_seo_defaults() {
 		'phone'         => '+63 933 064 8606',
 		'email'         => 'info@lyfdfab.com',
 		'email2'        => 'lyfd.fabrication@gmail.com',
-		'street'        => '',
+		'street'        => 'Km. 3 Bugac, Ma-a',
 		'city'          => 'Davao City',
 		'region'        => 'Davao del Sur',
 		'postal'        => '8000',
@@ -308,7 +308,8 @@ add_action(
 					array( '@type' => 'Country', 'name' => 'Philippines' ),
 				),
 				'sameAs'      => array_values( array_filter( array( $s['facebook'] ) ) ),
-				'knowsAbout'  => array( 'Stainless steel fabrication', 'Commercial kitchen equipment', 'Kitchen exhaust hoods', 'Ducting systems', 'Centrifugal blowers', 'Welding', 'Metal works' ),
+				'foundingDate' => '2010-04-13',
+				'knowsAbout'  => array( 'Stainless steel fabrication', 'Food service counters', 'Architectural railings', 'Commercial kitchen equipment', 'Kitchen exhaust hoods', 'Ducting systems', 'Centrifugal blowers', 'Welding', 'Metal works' ),
 				'hasOfferCatalog' => array(
 					'@type'           => 'OfferCatalog',
 					'name'            => 'Stainless fabrication services',

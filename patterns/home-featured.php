@@ -30,23 +30,23 @@ $products = esc_url( home_url( '/products/' ) );
 <!-- wp:group {"className":"lyfd-feature-row lyfd-stagger","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-feature-row lyfd-stagger"><!-- wp:group {"className":"lyfd-product lyfd-tilt lyfd-reveal","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-product lyfd-tilt lyfd-reveal"><!-- wp:image {"sizeSlug":"large","linkDestination":"custom"} -->
-<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'corner-cabinets-sink.webp' ); ?>" alt="Stainless steel corner cabinets with sink"/></a></figure>
+<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'triple-sink-table.webp' ); ?>" alt="Stainless steel triple-sink work table"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lyfd-product__meta","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-product__meta"><!-- wp:paragraph {"className":"lyfd-product__tag"} -->
-<p class="lyfd-product__tag">Full Kitchens</p>
+<p class="lyfd-product__tag">Counters &amp; Sinks</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"lyfd-product__title"} -->
-<h3 class="wp-block-heading lyfd-product__title">Corner Cabinets &amp; Sink</h3>
+<h3 class="wp-block-heading lyfd-product__title">Triple-Sink Work Table</h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"lyfd-product lyfd-tilt lyfd-reveal","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-product lyfd-tilt lyfd-reveal"><!-- wp:image {"sizeSlug":"large","linkDestination":"custom"} -->
-<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'three-burner-counter.webp' ); ?>" alt="Stainless steel three-burner cooking counter"/></a></figure>
+<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'three-burner-wok-range.webp' ); ?>" alt="Heavy-duty stainless steel three-burner wok range"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lyfd-product__meta","layout":{"type":"default"}} -->
@@ -55,23 +55,23 @@ $products = esc_url( home_url( '/products/' ) );
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"lyfd-product__title"} -->
-<h3 class="wp-block-heading lyfd-product__title">Three-Burner Counter</h3>
+<h3 class="wp-block-heading lyfd-product__title">Three-Burner Wok Range</h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"lyfd-product lyfd-tilt lyfd-reveal","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-product lyfd-tilt lyfd-reveal"><!-- wp:image {"sizeSlug":"large","linkDestination":"custom"} -->
-<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'green-centrifugal-blowers.webp' ); ?>" alt="Green centrifugal blowers fabricated by LYFD"/></a></figure>
+<figure class="wp-block-image size-large"><a href="<?php echo $products; ?>"><img src="<?php echo lyfd_img( 'hood-wok-line.webp' ); ?>" alt="Stainless steel exhaust hood above a wok cooking line"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lyfd-product__meta","layout":{"type":"default"}} -->
 <div class="wp-block-group lyfd-product__meta"><!-- wp:paragraph {"className":"lyfd-product__tag"} -->
-<p class="lyfd-product__tag">Blowers &amp; Ducting</p>
+<p class="lyfd-product__tag">Hoods &amp; Exhaust</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3,"className":"lyfd-product__title"} -->
-<h3 class="wp-block-heading lyfd-product__title">Centrifugal Blowers</h3>
+<h3 class="wp-block-heading lyfd-product__title">Hood &amp; Wok Cooking Line</h3>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

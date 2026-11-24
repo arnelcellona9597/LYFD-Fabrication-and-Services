@@ -43,7 +43,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">You receive a clear layout and a transparent quotation before any steel is cut.</p>
+<p class="lyfd-card__text">You receive a clear layout, survey, cost analysis and a transparent quotation before any steel is cut.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -57,7 +57,7 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-card__text"} -->
-<p class="lyfd-card__text">Precision cutting, welding and polishing, checked at every stage.</p>
+<p class="lyfd-card__text">Precision cutting, welding and polishing, with strict QA/QC at every stage.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

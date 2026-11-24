@@ -10,7 +10,7 @@ $contact  = esc_url( home_url( '/#contact' ) );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lyfd-hero","layout":{"type":"default"}} -->
 <section class="wp-block-group alignfull lyfd-hero"><!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"lyfd-hero__bg"} -->
-<figure class="wp-block-image size-full lyfd-hero__bg"><img src="<?php echo lyfd_img( 'commercial-kitchen.webp' ); ?>" alt="Stainless steel commercial kitchen fabricated by LYFD"/></figure>
+<figure class="wp-block-image size-full lyfd-hero__bg"><img src="<?php echo lyfd_img( 'kitchen-island-hood-line.webp' ); ?>" alt="Stainless steel commercial kitchen fabricated by LYFD"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lyfd-hero__inner","layout":{"type":"default"}} -->
@@ -24,7 +24,7 @@ $contact  = esc_url( home_url( '/#contact' ) );
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-hero__lead"} -->
-<p class="lyfd-hero__lead">Custom-fabricated kitchens, hoods, ducting, blowers and metal works &mdash; measured, welded, polished and installed with uncompromising precision.</p>
+<p class="lyfd-hero__lead">Custom-fabricated kitchens, hoods, ducting, blowers and metal works &mdash; measured, welded, polished and installed with uncompromising precision. Serving Davao since 2010.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"lyfd-hero__actions"} -->

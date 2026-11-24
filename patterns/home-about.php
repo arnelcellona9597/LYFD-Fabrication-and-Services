@@ -7,11 +7,11 @@
  */
 // Slider photos: [file, tag, title, alt]. Add/remove slides by duplicating a slide group in the editor.
 $slides = array(
-	array( 'kitchen-griddle-hood.webp',       'Full Kitchens',    'Kitchen with Griddle & Hood', 'Stainless steel kitchen with griddle station, backsplash and hood fabricated by LYFD' ),
-	array( 'double-sink-counter.webp',        'Counters & Sinks', 'Double-Sink Counter',         'Stainless steel double-sink counter with cabinets' ),
-	array( 'three-burner-counter.webp',       'Cooking Stations', 'Three-Burner Counter',        'Stainless steel three-burner cooking counter' ),
-	array( 'wall-mounted-blower-ducting.webp','Blowers & Ducting','Wall-Mounted Blower',         'Wall-mounted green blower with black ducting' ),
-	array( 'blowers-on-delivery-truck.webp',  'Blowers & Ducting','Blowers Ready for Delivery',  'Three green centrifugal blowers loaded on a delivery truck' ),
+	array( 'full-kitchen-hall.webp',          'Full Kitchens',    'Complete Kitchen Fit-Out',     'Complete stainless steel commercial kitchen fit-out fabricated by LYFD' ),
+	array( 'triple-sink-table.webp',          'Counters & Sinks', 'Triple-Sink Work Table',       'Stainless steel triple-sink work table with shelving' ),
+	array( 'three-burner-wok-range.webp',     'Cooking Stations', 'Three-Burner Wok Range',       'Heavy-duty stainless steel three-burner wok range' ),
+	array( 'hood-wok-line.webp',              'Hoods & Exhaust',  'Hood & Wok Cooking Line',      'Stainless steel exhaust hood above a wok cooking line' ),
+	array( 'counter-heat-lamps.webp',         'Counters & Sinks', 'Counter with Heat Lamps',      'Stainless steel food-service counter with heat lamps' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","anchor":"about","align":"full","className":"lyfd-section lyfd-about","layout":{"type":"default"}} -->
@@ -54,11 +54,15 @@ $slides = array(
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lyfd-lead lyfd-reveal"} -->
-<p class="lyfd-lead lyfd-reveal">LYFD Stainless Fabrication and Services is a Davao City workshop specializing in custom stainless steel fabrication &mdash; from commercial kitchen hoods, ducting systems and blowers to counters, cooking stations and bespoke metal works.</p>
+<p class="lyfd-lead lyfd-reveal">Registered in April 2010, LYFD Stainless Fabrication and Services is a Davao City manufacturer of stainless steel food counters and kitchen equipment for hotels, restaurants, hospitals, industrial establishments and home use &mdash; from commercial kitchen hoods, ducting systems and blowers to counters, cooking stations and bespoke metal works.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lyfd-reveal"} -->
-<p class="lyfd-reveal">We work with restaurants, hotels, commissaries and homeowners to turn a floor plan into a working, easy-to-clean, built-to-last space. Every piece is measured to your layout, welded and finished by skilled fabricators, then delivered and installed on site.</p>
+<p class="lyfd-reveal">We work with restaurants, hotels, commissaries and homeowners to turn a floor plan into a working, easy-to-clean, built-to-last space. Every piece is measured to your layout, welded and finished by skilled fabricators, then delivered and installed on site. Our service covers system design, site survey and estimates, cost analysis and turnkey projects, with strict quality assurance and quality control &mdash; and a commitment to a proudly Philippine-made product.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"lyfd-reveal"} -->
+<p class="lyfd-reveal"><strong>Our core values:</strong> Philosophy, Excellence, Integrity, Team Work, Loyalty and Concern for People.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->

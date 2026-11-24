@@ -57,7 +57,7 @@ add_action(
 			<div class="lyfd-promo__scrim" data-promo-close></div>
 			<div class="lyfd-promo__card">
 				<button type="button" class="lyfd-promo__close" data-promo-close aria-label="Close">&times;</button>
-				<div class="lyfd-promo__media"><img src="<?php echo lyfd_img( 'green-centrifugal-blowers.webp' ); ?>" alt="" width="1282" height="920" loading="lazy" decoding="async"></div>
+				<div class="lyfd-promo__media"><img src="<?php echo lyfd_img( 'hood-grill-station.webp' ); ?>" alt="" width="1103" height="803" loading="lazy" decoding="async"></div>
 				<div class="lyfd-promo__body">
 					<p class="lyfd-eyebrow">Our Products</p>
 					<h2 class="lyfd-promo__title" id="lyfd-promo-title">See what we fabricate</h2>

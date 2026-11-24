@@ -40,7 +40,7 @@ $fb = esc_url( 'https://www.facebook.com/profile.php?id=61595745041102' );
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lyfd-contact__value"} -->
-<p class="lyfd-contact__value">Davao City, Philippines</p>
+<p class="lyfd-contact__value">Km. 3 Bugac, Ma-a,<br>Davao City 8000</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
